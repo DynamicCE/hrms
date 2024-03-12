@@ -1,2 +1,5 @@
-package kodlamaio.hrms.business.concretes;public class CandidateManager {
+package kodlamaio.hrms.business.concretes;
+
+public
+class CandidateManager {
 }

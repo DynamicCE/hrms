@@ -1,2 +1,5 @@
-package kodlamaio.hrms.business.abstracts;public interface EmployeeService {
+package kodlamaio.hrms.business.abstracts;
+
+public
+interface EmployeeService {
 }

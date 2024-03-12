@@ -10,9 +10,9 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "employers")
+@Table(name = "employers")  
 public
-class Employers {
+class Employers extends Users{
     @Id
     @GeneratedValue
     @Column(name = "id")
@@ -25,5 +25,6 @@ class Employers {
     private String phoneNumber;
     @Column(name = "email")
     private String email;
+
     
 }

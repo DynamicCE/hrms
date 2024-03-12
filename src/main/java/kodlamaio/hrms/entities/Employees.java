@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Table(name = "employees")
 public
-class Employees {
+class Employees extends Users{
     @Column(name = "id")
     private int id;
     @Column(name = "first_name")
