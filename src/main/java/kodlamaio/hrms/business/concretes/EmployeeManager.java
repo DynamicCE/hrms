@@ -4,7 +4,7 @@ import java.util.List;
 
 import kodlamaio.hrms.business.abstracts.EmployeeService;
 import kodlamaio.hrms.dataAccess.abstracts.UserDao;
-import kodlamaio.hrms.entities.Employees;
+import kodlamaio.hrms.entities.Employee;
 
 public
 class EmployeeManager implements EmployeeService{
@@ -16,7 +16,7 @@ UserDao userDao;
     }
 
     @Override
-    public List<Employees> getAll( ) {
+    public List<Employee> getAll( ) {
         userDao.findAll ();
         throw new UnsupportedOperationException("Unimplemented method 'getAll'");
     }

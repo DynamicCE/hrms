@@ -4,7 +4,7 @@ import java.util.List;
 
 import kodlamaio.hrms.business.abstracts.CandidateService;
 import kodlamaio.hrms.dataAccess.abstracts.UserDao;
-import kodlamaio.hrms.entities.Candidates;
+import kodlamaio.hrms.entities.Candidate;
 
 public
 class CandidateManager implements CandidateService{
@@ -16,7 +16,7 @@ private UserDao userDao;
     }
 
     @Override
-    public List<Candidates> getAll() {
+    public List<Candidate> getAll() {
         userDao.findAll ();
         throw new UnsupportedOperationException("Unimplemented method 'getAll'");
     }

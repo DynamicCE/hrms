@@ -1,6 +1,5 @@
 package kodlamaio.hrms.entities;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +11,7 @@ import lombok.Data;
 @Entity
 @Table(name = "employers")  
 public
-class Employers extends Users{
+class Employer extends User{
     @Id
     @GeneratedValue
     @Column(name = "id")

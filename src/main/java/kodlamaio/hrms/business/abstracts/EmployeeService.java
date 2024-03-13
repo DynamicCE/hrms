@@ -2,9 +2,9 @@ package kodlamaio.hrms.business.abstracts;
 
 import java.util.List;
 
-import kodlamaio.hrms.entities.Employees;
+import kodlamaio.hrms.entities.Employee;
 
 public
 interface EmployeeService {
-    List<Employees> getAll( );
+    List<Employee> getAll( );
 }

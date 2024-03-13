@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @Table(name = "users")
 public
-class Users {
+class User {
     @Column(name = "id")
     private int id;
     @Column(name = "email")

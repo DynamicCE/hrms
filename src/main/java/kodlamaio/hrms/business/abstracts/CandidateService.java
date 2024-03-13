@@ -2,9 +2,9 @@ package kodlamaio.hrms.business.abstracts;
 
 import java.util.List;
 
-import kodlamaio.hrms.entities.Candidates;
+import kodlamaio.hrms.entities.Candidate;
 
 public
 interface CandidateService {
-    List<Candidates> getAll( );
+    List<Candidate> getAll( );
 }
