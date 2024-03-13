@@ -1,6 +1,7 @@
 package kodlamaio.hrms.entities;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -8,6 +9,7 @@ import lombok.Data;
 @Table(name = "employees")
 public
 class Employees extends Users{
+    @Id
     @Column(name = "id")
     private int id;
     @Column(name = "first_name")
