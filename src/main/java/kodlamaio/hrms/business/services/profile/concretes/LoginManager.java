@@ -1,6 +1,6 @@
-package kodlamaio.hrms.business.services.concretes;
+package kodlamaio.hrms.business.services.profile.concretes;
 
-import kodlamaio.hrms.business.services.abstracts.LoginService;
+import kodlamaio.hrms.business.services.profile.abstracts.LoginService;
 
 public class LoginManager implements LoginService{
 

@@ -1,4 +1,4 @@
-package kodlamaio.hrms.business.services.abstracts;
+package kodlamaio.hrms.business.services.registration.abstracts;
 
 import org.springframework.stereotype.Service;
 

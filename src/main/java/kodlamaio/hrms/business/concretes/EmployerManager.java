@@ -3,21 +3,20 @@ package kodlamaio.hrms.business.concretes;
 import java.util.List;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
-import kodlamaio.hrms.dataAccess.abstracts.UserDao;
-import kodlamaio.hrms.entities.Employer;
+import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
+import kodlamaio.hrms.entities.userEntities.Employer;
 
 public
 class EmployerManager implements EmployerService {
-    private UserDao userDao;
+    private EmployerDao employerDao;
 
     public
-    EmployerManager ( UserDao userDao ) {
-        this.userDao = userDao;
+    EmployerManager ( EmployerDao employerDao ) {
+        this.employerDao = employerDao;
     }
 
     @Override
     public List<Employer> getAll() {
-        userDao.findAll ();
-        throw new UnsupportedOperationException("Unimplemented method 'getAll'");
+        return employerDao.findAll ();
     }
 }

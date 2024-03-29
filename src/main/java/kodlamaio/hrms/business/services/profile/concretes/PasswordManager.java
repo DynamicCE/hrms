@@ -1,6 +1,6 @@
-package kodlamaio.hrms.business.services.concretes;
+package kodlamaio.hrms.business.services.profile.concretes;
 
-import kodlamaio.hrms.business.services.abstracts.PasswordService;
+import kodlamaio.hrms.business.services.profile.abstracts.PasswordService;
 
 public class PasswordManager implements PasswordService{
 

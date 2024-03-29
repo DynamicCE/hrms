@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entities;
+package kodlamaio.hrms.entities.userEntities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,16 +11,16 @@ import lombok.Data;
 @Entity
 @Table(name = "employers")  
 public
-class Employer extends User{
+class Employer extends User {
     @Id
     @GeneratedValue
     @Column(name = "id")
     private int id;
-    @Column(name = "company_name")
+    @Column(name = "company_name",nullable = false,unique = true)
     private String companyName;
-    @Column(name = "website")
+    @Column(name = "website",unique = true)
     private String website;
-    @Column(name = "phone_number")
+    @Column(name = "phone_number",nullable = false,unique = true)
     private String phoneNumber;
     @Column(name = "email")
     private String email;

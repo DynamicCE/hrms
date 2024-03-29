@@ -4,7 +4,7 @@ import java.util.List;
 
 import kodlamaio.hrms.business.abstracts.CandidateService;
 import kodlamaio.hrms.dataAccess.abstracts.UserDao;
-import kodlamaio.hrms.entities.Candidate;
+import kodlamaio.hrms.entities.userEntities.Candidate;
 
 public
 class CandidateManager implements CandidateService{

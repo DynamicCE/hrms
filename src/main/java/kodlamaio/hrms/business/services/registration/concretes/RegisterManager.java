@@ -1,6 +1,6 @@
-package kodlamaio.hrms.business.services.concretes;
+package kodlamaio.hrms.business.services.registration.concretes;
 
-import kodlamaio.hrms.business.services.abstracts.RegisterService;
+import kodlamaio.hrms.business.services.registration.abstracts.RegisterService;
 
 public class RegisterManager implements RegisterService{
 

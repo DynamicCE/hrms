@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entities;
+package kodlamaio.hrms.entities.jobEntities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;

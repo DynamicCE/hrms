@@ -1,6 +1,6 @@
-package kodlamaio.hrms.business.services.concretes;
+package kodlamaio.hrms.business.services.email.concretes;
 
-import kodlamaio.hrms.business.services.abstracts.EmailVerificationService;
+import kodlamaio.hrms.business.services.email.abstracts.EmailVerificationService;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
 
 public class EmailVerificationManager implements EmailVerificationService{

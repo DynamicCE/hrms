@@ -1,4 +1,4 @@
-package kodlamaio.hrms.business.services.abstracts;
+package kodlamaio.hrms.business.services.profile.abstracts;
 
 import org.apache.catalina.User;
 import org.springframework.stereotype.Service;

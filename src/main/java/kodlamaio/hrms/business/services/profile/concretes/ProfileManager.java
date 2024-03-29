@@ -1,8 +1,8 @@
-package kodlamaio.hrms.business.services.concretes;
+package kodlamaio.hrms.business.services.profile.concretes;
 
 import org.apache.catalina.User;
 
-import kodlamaio.hrms.business.services.abstracts.ProfileService;
+import kodlamaio.hrms.business.services.profile.abstracts.ProfileService;
 
 public class ProfileManager implements ProfileService{
 

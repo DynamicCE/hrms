@@ -4,7 +4,7 @@ import java.util.List;
 
 import kodlamaio.hrms.business.abstracts.EmployeeService;
 import kodlamaio.hrms.dataAccess.abstracts.UserDao;
-import kodlamaio.hrms.entities.Employee;
+import kodlamaio.hrms.entities.userEntities.Employee;
 
 public
 class EmployeeManager implements EmployeeService{

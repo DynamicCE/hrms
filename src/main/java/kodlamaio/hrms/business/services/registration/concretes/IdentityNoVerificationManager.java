@@ -1,6 +1,6 @@
-package kodlamaio.hrms.business.services.concretes;
+package kodlamaio.hrms.business.services.registration.concretes;
 
-import kodlamaio.hrms.business.services.abstracts.IdentityNoVerificationService;
+import kodlamaio.hrms.business.services.registration.abstracts.IdentityNoVerificationService;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
 
 public class IdentityNoVerificationManager implements IdentityNoVerificationService{
