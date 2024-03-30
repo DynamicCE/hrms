@@ -1,4 +1,4 @@
-package kodlamaio.hrms.dataAccess.abstracts;
+package kodlamaio.hrms.dataAccess.user.abstracts;
 
 import org.apache.catalina.User;
 import org.springframework.data.jpa.repository.JpaRepository;

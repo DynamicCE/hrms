@@ -1,7 +1,9 @@
 package kodlamaio.hrms.business.services.registration.concretes;
 
-import kodlamaio.hrms.business.services.registration.abstracts.RegisterService;
+import org.springframework.stereotype.Service;
 
+import kodlamaio.hrms.business.services.registration.abstracts.RegisterService;
+@Service
 public class RegisterManager implements RegisterService{
 
     @Override

@@ -1,10 +1,10 @@
 package kodlamaio.hrms.entities.userEntities;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Data;
-
+@Entity
 @Data
 @Table(name = "employees")
 public

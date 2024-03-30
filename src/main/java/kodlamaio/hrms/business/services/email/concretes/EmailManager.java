@@ -1,7 +1,9 @@
 package kodlamaio.hrms.business.services.email.concretes;
 
-import kodlamaio.hrms.business.services.email.abstracts.EmailService;
+import org.springframework.stereotype.Service;
 
+import kodlamaio.hrms.business.services.email.abstracts.EmailService;
+@Service
 public class EmailManager implements EmailService{
 
     @Override

@@ -1,7 +1,9 @@
 package kodlamaio.hrms.business.services.profile.concretes;
 
-import kodlamaio.hrms.business.services.profile.abstracts.PasswordService;
+import org.springframework.stereotype.Service;
 
+import kodlamaio.hrms.business.services.profile.abstracts.PasswordService;
+@Service
 public class PasswordManager implements PasswordService{
 
     @Override

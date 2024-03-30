@@ -1,2 +1,10 @@
-package kodlamaio.hrms.api.controllers.confirmationControllers;public class EmployeeConfirmEmployersController {
+package kodlamaio.hrms.api.controllers.confirmationControllers;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/employeeConfirmEmployers")
+public
+class EmployeeConfirmEmployersController {
 }

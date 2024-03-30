@@ -1,7 +1,9 @@
 package kodlamaio.hrms.business.services.profile.concretes;
 
-import kodlamaio.hrms.business.services.profile.abstracts.NotificationService;
+import org.springframework.stereotype.Service;
 
+import kodlamaio.hrms.business.services.profile.abstracts.NotificationService;
+@Service
 public class NotificationManager implements NotificationService{
 
     @Override

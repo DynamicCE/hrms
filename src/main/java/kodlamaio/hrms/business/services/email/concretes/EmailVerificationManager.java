@@ -1,8 +1,10 @@
 package kodlamaio.hrms.business.services.email.concretes;
 
-import kodlamaio.hrms.business.services.email.abstracts.EmailVerificationService;
-import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
+import org.springframework.stereotype.Service;
 
+import kodlamaio.hrms.business.services.email.abstracts.EmailVerificationService;
+import kodlamaio.hrms.dataAccess.user.abstracts.CandidateDao;
+@Service
 public class EmailVerificationManager implements EmailVerificationService{
     private CandidateDao CandidateDao;
 

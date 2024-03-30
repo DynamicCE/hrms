@@ -1,2 +1,5 @@
-package kodlamaio.hrms.core;public class ErrorDataResult {
+package kodlamaio.hrms.core;
+
+public
+class ErrorDataResult {
 }

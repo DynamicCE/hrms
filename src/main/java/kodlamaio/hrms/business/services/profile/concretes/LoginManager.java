@@ -1,7 +1,9 @@
 package kodlamaio.hrms.business.services.profile.concretes;
 
-import kodlamaio.hrms.business.services.profile.abstracts.LoginService;
+import org.springframework.stereotype.Service;
 
+import kodlamaio.hrms.business.services.profile.abstracts.LoginService;
+@Service
 public class LoginManager implements LoginService{
 
     @Override

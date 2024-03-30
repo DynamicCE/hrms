@@ -1,9 +1,10 @@
 package kodlamaio.hrms.business.services.profile.concretes;
 
 import org.apache.catalina.User;
+import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.services.profile.abstracts.ProfileService;
-
+@Service
 public class ProfileManager implements ProfileService{
 
     @Override

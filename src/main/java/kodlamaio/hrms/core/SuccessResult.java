@@ -1,2 +1,5 @@
-package kodlamaio.hrms.core;public class SuccessResult {
+package kodlamaio.hrms.core;
+
+public
+class SuccessResult {
 }
