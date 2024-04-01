@@ -19,7 +19,7 @@ class EmployeeConfirmEmployers {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employer_id" ,referencedColumnName = "employer_id")
+    @JoinColumn(name = "employer_id" ,referencedColumnName = "id")
     private Employer employer;
 
     @Column(name = "is_confirmed")
