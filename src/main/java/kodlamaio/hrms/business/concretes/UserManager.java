@@ -1,6 +1,7 @@
 package kodlamaio.hrms.business.concretes;
 
 import java.util.List;
+import java.util.Optional;
 
 import kodlamaio.hrms.entities.userEntities.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,11 @@ class UserManager implements UserService {
     List<User> getAll () {
         return userDao.findAll ();
     }
+
+    @Override
+    public
+    Optional<User> findById (int id) {
+      return userDao.findById (id  );
+    }
+
 }
