@@ -23,8 +23,15 @@ class UserManager implements UserService {
 
     @Override
     public
-    Optional<User> findById (int id) {
+    Optional<User> findById (Long id) {
       return userDao.findById (id  );
     }
+
+    @Override
+    public
+    void createUser ( Long id ) {
+        userDao.save ( user );
+    }
+
 
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository; // Eksik anotasyon
 import kodlamaio.hrms.entities.userEntities.Employer;
 
 @Repository 
-public interface EmployerDao extends JpaRepository<Employer, Integer>{
+public interface EmployerDao extends JpaRepository<Employer, Long>{
 
 }

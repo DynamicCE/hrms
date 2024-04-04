@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import kodlamaio.hrms.entities.userEntities.Candidate;
 @Repository 
 public
-interface CandidateDao extends JpaRepository<Candidate, Integer> {
+interface CandidateDao extends JpaRepository<Candidate, Long> {
     public
     boolean existsByEmail ( String email );
     boolean existsByIdentityNo ( int identityNo );

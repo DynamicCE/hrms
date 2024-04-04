@@ -5,10 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import kodlamaio.hrms.business.abstracts.UserService;
 import kodlamaio.hrms.entities.userEntities.User;
@@ -21,14 +19,22 @@ class UserController {
     private UserService userService;
 
     @GetMapping
-    public
-    List<User> getAll () {
-        return userService.getAll ( );
+    public ResponseEntity<List<User>> getAllUsers(){
+        return ResponseEntity.ok ( userService.getAll () );
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<User>> getUser( @PathVariable int id){
+        if(userService.findById ( id ) != null){
+            return ResponseEntity.ok ( userService.findById ( id ) );
+        }else{
+            return ResponseEntity.notFound ().build ();
+        }
+    }
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody User newUser){
+        userService.createUser ( newUser.getId ( ) );
+        return ResponseEntity.ok (newUser);
     }
 
-    @GetMapping("/api/id")
-    public
-    Optional<User> getUser ( @PathVariable int id ) {
-        return userService.findById ( id );
-    }
+
 }
