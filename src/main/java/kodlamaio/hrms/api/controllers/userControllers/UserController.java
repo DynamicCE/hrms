@@ -23,7 +23,7 @@ class UserController {
         return ResponseEntity.ok ( userService.getAll () );
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<User>> getUser( @PathVariable int id){
+    public ResponseEntity<Optional<User>> getUser( @PathVariable Long id){
         if(userService.findById ( id ) != null){
             return ResponseEntity.ok ( userService.findById ( id ) );
         }else{
@@ -32,8 +32,13 @@ class UserController {
     }
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User newUser){
-        userService.createUser ( newUser.getId ( ) );
+        userService.createUser ( newUser );
         return ResponseEntity.ok (newUser);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id,@RequestBody User updatedUser){
+        userService.updateUser(updatedUser);
+        return ResponseEntity.ok ( updatedUser );
     }
 
 
