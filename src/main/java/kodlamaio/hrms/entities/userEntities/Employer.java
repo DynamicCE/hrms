@@ -12,10 +12,7 @@ import lombok.Data;
 @Table(name = "employers")  
 public
 class Employer extends User {
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
-    private Long id;
+
     @Column(name = "company_name",nullable = false,unique = true)
     private String companyName;
     @Column(name = "website",unique = true)
