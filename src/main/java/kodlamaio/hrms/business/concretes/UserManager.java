@@ -44,4 +44,14 @@ class UserManager implements UserService {
             throw new IllegalArgumentException ( "işlem başarısız" );
         }
     }
+
+    @Override
+    public
+    void deleteUser ( Long id ) {
+        if(id != null && userDao.existsById ( id )){
+            userDao.deleteById ( id );
+        }else {
+            throw new IllegalArgumentException("işlem başarısız");
+        }
+    }
 }
