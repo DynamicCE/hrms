@@ -47,6 +47,16 @@ class UserManager implements UserService {
 
     @Override
     public
+    Object saveUser ( User entity ) {
+        if(entity != null){
+            userDao.save ( entity );
+        }else {
+            throw new IllegalArgumentException ( "kullanıcı zaten kayıtlı" );
+        }
+    }
+
+    @Override
+    public
     void deleteUser ( Long id ) {
         if(id != null && userDao.existsById ( id )){
             userDao.deleteById ( id );
