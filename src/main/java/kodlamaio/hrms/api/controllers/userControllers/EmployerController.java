@@ -17,17 +17,5 @@ import kodlamaio.hrms.entities.userEntities.Employer;
 @RequestMapping("/api/employers")
 public
 class EmployerController {
-    @Autowired
-    private
-    EmployerService employerService;
 
-    @GetMapping
-    public
-    ResponseEntity<List<Employer>> getAllEmployers(){
-        return ResponseEntity.ok ( employerService.getAll () );
-    }
-    @GetMapping("/{id}")
-    public ResponseEntity<Optional<Employer>> getEmployer( @PathVariable Long id ){
-        employerService.get
-    }
 }

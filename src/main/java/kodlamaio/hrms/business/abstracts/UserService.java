@@ -8,7 +8,8 @@ import java.util.Optional;
 public
 interface UserService<T> {
     List<T> getAll();
-    Optional<T> findById ( Long id);
-    T saveUser(T entity);
-    void deleteUser(Long id);
+    T get(Long id);
+    T create(T entity);
+    T update(Long id, T entity);
+    void delete(Long id);
 }

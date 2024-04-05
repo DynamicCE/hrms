@@ -16,52 +16,34 @@ class UserManager implements UserService {
     @Autowired
     private UserDao userDao;
 
+
     @Override
     public
-    List<User> getAll () {
+    List getAll () {
         return userDao.findAll ( );
     }
 
     @Override
     public
-    Optional<User> findById ( Long id ) {
+    Object get ( Long id ) {
         return userDao.findById ( id );
     }
 
     @Override
     public
-    User createUser ( User user ) {
-        userDao.save ( user );
-        return user;
+    Object create ( Object entity ) {
+        userDao.save ( entity  );
     }
 
     @Override
     public
-    User updateUser ( User user ) {
-        if((user != null) && (user.getId ( ) != null) && userDao.existsById ( user.getId ( ) )){
-            return userDao.save ( user);
-        }else {
-            throw new IllegalArgumentException ( "işlem başarısız" );
-        }
+    Object update ( Long id, Object entity ) {
+        return null;
     }
 
     @Override
     public
-    Object saveUser ( User entity ) {
-        if(entity != null){
-            userDao.save ( entity );
-        }else {
-            throw new IllegalArgumentException ( "kullanıcı zaten kayıtlı" );
-        }
-    }
+    void delete ( Long id ) {
 
-    @Override
-    public
-    void deleteUser ( Long id ) {
-        if(id != null && userDao.existsById ( id )){
-            userDao.deleteById ( id );
-        }else {
-            throw new IllegalArgumentException("işlem başarısız");
-        }
     }
 }

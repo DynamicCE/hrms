@@ -21,36 +21,13 @@ import kodlamaio.hrms.entities.userEntities.User;
 @RestController
 @RequestMapping("/api/users")
 public
-class UserController {
+class UserController<T> {
     @Autowired
-    private UserService userService;
+    private UserService<T> userService;
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers(){
-        return ResponseEntity.ok ( userService.getAll () );
-    }
-    @GetMapping("/{id}")
-    public ResponseEntity<Optional<User>> getUser( @PathVariable Long id){
-        if(userService.findById ( id ).isPresent ( )){
-            return ResponseEntity.ok ( userService.findById ( id ) );
-        }else{
-            return ResponseEntity.notFound ().build ();
-        }
-    }
-    @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User newUser){
-        userService.saveUser ( newUser );
-        return ResponseEntity.ok (newUser);
-    }
-    @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id,@RequestBody User updatedUser){
-        userService.saveUser (updatedUser);
-        return null;
-    }
-    @DeleteMapping("/{id}")
-    public ResponseEntity<User> deleteUser(@PathVariable Long id){
-        userService.deleteUser ( id );
-        return (ResponseEntity<User>) ResponseEntity.ok ();
+    public List<T> getAll(){
+        return userService.getAll ();
     }
 
 }
