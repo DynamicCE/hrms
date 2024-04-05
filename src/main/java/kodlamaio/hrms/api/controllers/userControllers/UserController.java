@@ -39,12 +39,12 @@ class UserController {
     }
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User newUser){
-        userService.createUser ( newUser );
+        userService.saveUser ( newUser );
         return ResponseEntity.ok (newUser);
     }
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id,@RequestBody User updatedUser){
-        userService.updateUser(updatedUser);
+        userService.saveUser (updatedUser);
         return null;
     }
     @DeleteMapping("/{id}")
