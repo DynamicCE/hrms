@@ -5,13 +5,14 @@ import java.util.Optional;
 
 import kodlamaio.hrms.entities.userEntities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.UserService;
 import kodlamaio.hrms.dataAccess.user.abstracts.UserDao;
 
 @Service
-public class UserManager implements UserService<User> {
+public class UserManager implements UserService {
     @Autowired
     private UserDao userDao;
 
@@ -19,36 +20,31 @@ public class UserManager implements UserService<User> {
     @Override
     public
     List<User> getAll () {
+      return userDao.findAll ();
+    }
+
+    @Override
+    public
+    Optional<User> findById ( Long id ) {
+        return userDao.findById ( id );
+    }
+
+    @Override
+    public
+    void updateUser ( User user ) {
+    userDao.save ( user );
+    }
+
+    @Override
+    public
+    ResponseEntity<User> createUser ( User user ) {
+        userDao.save ( user );
         return null;
     }
 
     @Override
     public
-    User get ( Long id ) {
-        return null;
-    }
-
-    @Override
-    public
-    User create ( User entity ) {
-        return userDao.save ( entity );
-    }
-
-    @Override
-    public
-    User update ( Long id, User entity ) {
-        User foundUser = userDao.findByEmail ( entity.getEmail () );
-        if(foundUser != null){
-            foundUser.setPassword ( entity.getPassword ());
-            userDao.save ( foundUser );
-            return foundUser;
-        }
-        return userDao.save ( entity );
-    }
-
-    @Override
-    public
-    void delete ( Long id ) {
-
+    void deleteUser ( Long id ) {
+userDao.deleteById (id  );
     }
 }

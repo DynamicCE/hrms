@@ -1,15 +1,17 @@
 package kodlamaio.hrms.business.abstracts;
 
 import kodlamaio.hrms.entities.userEntities.User;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;
 
 public
-interface UserService<T> {
-    List<T> getAll();
-    T get(Long id);
-    T create(T entity);
-    T update(Long id, T entity);
-    void delete(Long id);
+interface UserService {
+    List<User> getAll();
+    Optional<User> findById(Long id);
+    void updateUser(User user);
+    ResponseEntity<User> createUser( User user);
+    void deleteUser(Long id);
+
 }

@@ -23,11 +23,16 @@ import kodlamaio.hrms.entities.userEntities.User;
 public
 class UserController<T> {
     @Autowired
-    private UserService<T> userService;
+    private UserService userService;
 
     @GetMapping
-    public List<T> getAll(){
+    public List getAll(){
         return userService.getAll ();
+    }
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody User user){
+         userService.createUser ( user );
+        ResponseEntity.ok ()
     }
 
 }
