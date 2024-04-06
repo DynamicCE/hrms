@@ -37,7 +37,7 @@ public class UserManager implements UserService {
 
     @Override
     public
-    ResponseEntity<User> createUser ( User user ) {
+    User createUser ( User user ) {
         userDao.save ( user );
         return null;
     }

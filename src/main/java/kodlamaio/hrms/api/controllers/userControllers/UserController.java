@@ -31,8 +31,8 @@ class UserController<T> {
     }
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user){
-         userService.createUser ( user );
-        ResponseEntity.ok ()
+        user = userService.createUser ( user );
+        return ResponseEntity.ok (user);
     }
 
 }

@@ -11,7 +11,7 @@ interface UserService {
     List<User> getAll();
     Optional<User> findById(Long id);
     void updateUser(User user);
-    ResponseEntity<User> createUser( User user);
+    User createUser( User user);
     void deleteUser(Long id);
 
 }
