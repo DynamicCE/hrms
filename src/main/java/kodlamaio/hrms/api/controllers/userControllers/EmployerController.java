@@ -18,4 +18,5 @@ import kodlamaio.hrms.entities.userEntities.Employer;
 public
 class EmployerController {
 
+
 }

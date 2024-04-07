@@ -19,8 +19,6 @@ class Employer extends User {
     private String website;
     @Column(name = "phone_number",nullable = false,unique = true)
     private String phoneNumber;
-    @Column(name = "email")
-    private String email;
 
     
 }
