@@ -32,12 +32,21 @@ class EmployerController {
 
     @PostMapping({"/createEmployer"})
     public
-    ResponseEntity<Employer> createEmployer ( @RequestBody Employer foundEmployer ){
-        return ResponseEntity.ok (employerService.create(foundEmployer));
+    ResponseEntity<Employer> createEmployer ( @RequestBody Employer foundEmployer ) {
+        return ResponseEntity.ok ( employerService.create ( foundEmployer ) );
     }
+
     @PutMapping({"/updateEmployer"})
-    public ResponseEntity<Employer> updateEmployer(@PathVariable Long id ,@RequestBody Employer foundEmployer){
-        return ResponseEntity.ok (employerService.update ( foundEmployer ));
+    public
+    ResponseEntity<Employer> updateEmployer ( @PathVariable Long id, @RequestBody Employer foundEmployer ) {
+        return ResponseEntity.ok ( employerService.update ( foundEmployer ) );
     }
+
+    @DeleteMapping({"/delete"})
+    public
+    ResponseEntity<Employer> deleteEmployer ( @RequestBody Employer foundEmployer ) {
+        return ResponseEntity.ok (employerService.delete ( foundEmployer ));
+    }
+
 
 }

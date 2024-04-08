@@ -18,4 +18,6 @@ interface EmployerService {
     Employer create ( Employer foundEmployer );
 
     Employer update ( Employer foundEmployer );
+
+    Employer delete (Employer employer);
 }

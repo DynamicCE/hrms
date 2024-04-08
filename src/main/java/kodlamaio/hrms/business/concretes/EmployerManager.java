@@ -41,5 +41,12 @@ class EmployerManager implements EmployerService {
         return employerDao.save ( foundEmployer );
     }
 
+    @Override
+    public
+    Employer delete (Employer employer) {
+         employerDao.delete ( employer );
+         return employer;
+    }
+
 
 }
