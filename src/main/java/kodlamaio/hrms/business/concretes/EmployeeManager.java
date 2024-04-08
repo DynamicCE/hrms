@@ -21,4 +21,10 @@ class   EmployeeManager implements EmployeeService {
         employeeDao.findAll();
         throw new UnsupportedOperationException("Unimplemented method 'getAll'");
     }
+
+    @Override
+    public
+    void findById ( Long id ) {
+        employeeDao.findById ( id );
+    }
 }

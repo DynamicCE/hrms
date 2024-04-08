@@ -1,5 +1,15 @@
 package kodlamaio.hrms.core;
 
 public
-class SuccessResult {
+class SuccessResult extends Result{
+
+    public
+    SuccessResult (  ) {
+        super ( true );
+    }
+
+    public
+    SuccessResult (  String message ) {
+        super ( true, message );
+    }
 }

@@ -13,11 +13,11 @@ import lombok.Data;
 public
 class Employer extends User {
 
-    @Column(name = "company_name",nullable = false,unique = true)
+    @Column(name = "company_name")
     private String companyName;
-    @Column(name = "website",unique = true)
+    @Column(name = "website")
     private String website;
-    @Column(name = "phone_number",nullable = false,unique = true)
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     
