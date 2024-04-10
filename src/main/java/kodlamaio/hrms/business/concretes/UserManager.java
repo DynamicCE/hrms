@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import kodlamaio.hrms.entities.userEntities.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.UserService;
@@ -31,8 +30,9 @@ public class UserManager implements UserService {
 
     @Override
     public
-    void updateUser ( User user ) {
+    User updateUser ( User user ) {
     userDao.save ( user );
+        return user;
     }
 
     @Override
@@ -44,7 +44,13 @@ public class UserManager implements UserService {
 
     @Override
     public
+    User deleteUser ( User user ) {
+        return userDao.delete (user  );
+    }
+
+    @Override
+    public
     void deleteUser ( Long id ) {
-userDao.deleteById (id  );
+;
     }
 }

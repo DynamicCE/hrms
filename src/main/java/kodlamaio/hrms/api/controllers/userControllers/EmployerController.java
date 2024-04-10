@@ -24,13 +24,13 @@ class EmployerController {
         employerService.getAll ( );
     }
 
-    @GetMapping({"/getEmployer"})
+    @GetMapping("/{getemployer}")
     public
     ResponseEntity<Optional<Employer>> getEmployer ( @PathVariable Long id ) {
         return ResponseEntity.ok ( employerService.findById ( id ) );
     }
 
-    @PostMapping({"/createEmployer"})
+    @PostMapping("/{createEmployer}")
     public
     ResponseEntity<Employer> createEmployer ( @RequestBody Employer foundEmployer ) {
         return ResponseEntity.ok ( employerService.create ( foundEmployer ) );

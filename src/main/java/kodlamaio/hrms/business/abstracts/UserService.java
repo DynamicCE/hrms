@@ -13,4 +13,6 @@ interface UserService {
     User updateUser(User user);
     User createUser( User user);
     User deleteUser(User user);
+
+    void deleteUser ( Long id );
 }
