@@ -48,9 +48,5 @@ public class UserManager implements UserService {
         return userDao.delete (user  );
     }
 
-    @Override
-    public
-    void deleteUser ( Long id ) {
-;
-    }
+
 }
