@@ -44,8 +44,8 @@ public class UserManager implements UserService {
 
     @Override
     public
-    User deleteUser ( User user ) {
-        return userDao.delete ( user );
+    void deleteUser ( User user ) {
+        userDao.delete ( user );
     }
 
 

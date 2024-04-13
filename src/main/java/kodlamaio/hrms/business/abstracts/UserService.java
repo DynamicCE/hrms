@@ -12,7 +12,6 @@ interface UserService {
     Optional<User> findById(Long id);
     User updateUser(User user);
     User createUser( User user);
-    User deleteUser(User user);
 
-    void deleteUser ( Long id );
+    void deleteUser ( User user );
 }
