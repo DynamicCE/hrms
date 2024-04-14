@@ -39,7 +39,7 @@ public class UserManager implements UserService {
     public
     User createUser ( User user ) {
         userDao.save ( user );
-        return null;
+        return user;
     }
 
     @Override

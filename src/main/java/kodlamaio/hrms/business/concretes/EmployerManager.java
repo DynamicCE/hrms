@@ -43,9 +43,8 @@ class EmployerManager implements EmployerService {
 
     @Override
     public
-    Employer delete (Employer employer) {
+    void delete (Employer employer) {
          employerDao.delete ( employer );
-         return employer;
     }
 
 

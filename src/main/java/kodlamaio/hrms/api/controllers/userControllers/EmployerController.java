@@ -44,8 +44,8 @@ class EmployerController {
 
     @DeleteMapping({"/delete"})
     public
-    ResponseEntity<Employer> deleteEmployer ( @RequestBody Employer foundEmployer ) {
-        return ResponseEntity.ok (employerService.delete ( foundEmployer ));
+    void deleteEmployer ( @RequestBody Employer foundEmployer ) {
+        employerService.delete ( foundEmployer );
     }
 
 

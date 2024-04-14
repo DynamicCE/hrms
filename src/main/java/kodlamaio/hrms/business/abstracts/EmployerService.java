@@ -19,5 +19,5 @@ interface EmployerService {
 
     Employer update ( Employer foundEmployer );
 
-    Employer delete (Employer employer);
+    void delete (Employer employer);
 }
