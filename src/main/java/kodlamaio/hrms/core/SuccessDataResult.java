@@ -5,12 +5,12 @@ class SuccessDataResult<T> extends DataResult {
 
 
     public
-    SuccessDataResult (  Object data ) {
+    SuccessDataResult (  T data ) {
         super ( true, data );
     }
 
     public
-    SuccessDataResult (  String message, Object data ) {
+    SuccessDataResult (  T data,String message  ) {
         super (  true,message, data );
     }
 }

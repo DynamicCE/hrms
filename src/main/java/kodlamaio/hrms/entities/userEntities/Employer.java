@@ -1,10 +1,6 @@
 package kodlamaio.hrms.entities.userEntities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -20,5 +16,7 @@ class Employer extends User {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    
+    @OneToOne()
+    @JoinColumn(name="user_id")
+    private User user;
 }

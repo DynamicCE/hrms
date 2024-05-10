@@ -1,8 +1,6 @@
 package kodlamaio.hrms.entities.userEntities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 @Entity
 @Data
@@ -21,4 +19,8 @@ class Employee extends User {
 
     @Column(name = "birth_year",nullable = false)
     private int birthYear;
+
+    @OneToOne
+    @JoinColumn(name="user_id")
+    private User user;
 }

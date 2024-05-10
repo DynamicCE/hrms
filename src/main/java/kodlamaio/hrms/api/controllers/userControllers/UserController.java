@@ -4,6 +4,7 @@ package kodlamaio.hrms.api.controllers.userControllers;
 import java.util.List;
 import java.util.Optional;
 
+import kodlamaio.hrms.core.DataResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,20 +20,36 @@ import kodlamaio.hrms.business.abstracts.UserService;
 import kodlamaio.hrms.entities.userEntities.User;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/users/")
 public
-class UserController<T> {
-    @Autowired
+class UserController {
+
     private UserService userService;
 
-    @GetMapping
-    public List getAll(){
-        return userService.getAll ();
+    public
+    UserController ( UserService userService ) {
+        this.userService = userService;
     }
-    @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user){
-        user = userService.createUser ( user );
-        return ResponseEntity.ok (user);
+
+    @GetMapping("findByEmail")
+    DataResult<User> findByEmail( String email){
+        return userService.findByEmail ( email );
+    }
+    @GetMapping("findByUserName")
+    DataResult<List<User>> findByUserName( String userName){
+        return userService.findByUserName ( userName );
+    }
+    @GetMapping("findByUserNameContains")
+    DataResult<List<User>> findByUserNameContains(String userName){
+        return userService.findByUserNameContains ( userName );
+    }
+    @GetMapping("findByUserNameStartsWith")
+    DataResult<List<User>> findByUserNameStartsWith(String userName){
+        return userService.findByUserNameStartsWith (userName  );
+    }
+    @GetMapping("findByUserNameEndsWith")
+    DataResult<List<User>> findByUserNameEndsWith(String userName){
+        return userService.findByUserNameEndsWith ( userName );
     }
 
 }

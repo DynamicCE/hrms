@@ -1,13 +1,10 @@
 package kodlamaio.hrms.entities.userEntities;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -25,5 +22,13 @@ class User {
     @Column(name = "password")
     private String password;
 
-    
-}
+    @OneToOne(mappedBy = "user")
+    private Candidate candidates;
+
+    @OneToOne(mappedBy = "user")
+    private Employer employer;
+
+    @OneToOne(mappedBy = "user")
+    private Employee employee;
+
+};

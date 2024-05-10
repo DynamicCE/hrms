@@ -3,12 +3,12 @@ package kodlamaio.hrms.core;
 public
 class ErrorDataResult<T> extends DataResult {
     public
-    ErrorDataResult (  Object data ) {
+    ErrorDataResult (  T data ) {
         super ( false, data );
     }
 
     public
-    ErrorDataResult (  String message, Object data ) {
+    ErrorDataResult (  String message, T data ) {
         super ( false, message, data );
     }
 }
