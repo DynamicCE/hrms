@@ -20,30 +20,26 @@ public class UserManager implements UserService {
     @Override
     public
     DataResult<User> findByEmail ( String email ) {
-        return new SuccessDataResult<User> ( userDao.findByEmail ( email),"işlem başarılı"  );
+        return new SuccessDataResult<User> (userDao.findByEmail ( email),"işlem başarılı"  );
     }
 
     @Override
     public
-    DataResult<List<User>> findByUserName ( String userName ) {
-        return new SuccessDataResult<List<User>> ( userDao.findByUserName ( userName),"işlem başarılı" );
+    DataResult<List<User>> findByEmailContains ( String email ) {
+        return new SuccessDataResult<List<User>> (userDao.findByEmailContains ( email ),"işlem başarılı");
     }
 
     @Override
     public
-    DataResult<List<User>> findByUserNameContains ( String userName ) {
-        return new SuccessDataResult<List<User>> ( userDao.findByUserNameContains ( userName ),"işlem başarılı" );
+    DataResult<List<User>> findByEmailStartsWith ( String email ) {
+        return new SuccessDataResult<List<User>> ( userDao.findByEmailStartsWith ( email ),"işlem başarılı" );
     }
 
     @Override
     public
-    DataResult<List<User>> findByUserNameStartsWith ( String userName ) {
-        return new SuccessDataResult<List<User>> (userDao.findByUserNameStartsWith ( userName ),"işlem başarılı"  );
+    DataResult<List<User>> findByEmailEndsWith ( String email ) {
+        return new SuccessDataResult<List<User>> ( userDao.findByEmailEndsWith ( email),"işlem başarılı"  );
     }
 
-    @Override
-    public
-    DataResult<List<User>> findByUserNameEndsWith ( String userName ) {
-        return new SuccessDataResult<List<User>> ( userDao.findByUserNameEndsWith ( userName),"işlem başarılı"  );
-    }
+
 }

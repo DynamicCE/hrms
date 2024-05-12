@@ -1,7 +1,7 @@
 package kodlamaio.hrms.core;
 
 public
-class ErrorDataResult<T> extends DataResult {
+class ErrorDataResult<T> extends DataResult<T> {
     public
     ErrorDataResult (  T data ) {
         super ( false, data );

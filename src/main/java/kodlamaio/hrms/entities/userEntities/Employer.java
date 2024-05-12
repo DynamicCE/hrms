@@ -1,7 +1,10 @@
 package kodlamaio.hrms.entities.userEntities;
 
 import jakarta.persistence.*;
+import kodlamaio.hrms.entities.jobEntities.JobPosts;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -19,4 +22,8 @@ class Employer extends User {
     @OneToOne()
     @JoinColumn(name="user_id")
     private User user;
+
+    @OneToMany(mappedBy = "employer")
+    private
+    List<JobPosts> jobPosts;
 }

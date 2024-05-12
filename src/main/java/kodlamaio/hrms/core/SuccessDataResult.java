@@ -1,7 +1,7 @@
 package kodlamaio.hrms.core;
 
 public
-class SuccessDataResult<T> extends DataResult {
+class SuccessDataResult<T> extends DataResult<T> {
 
 
     public

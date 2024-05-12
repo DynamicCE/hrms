@@ -13,11 +13,10 @@ interface UserService {
 
     DataResult<User> findByEmail(String email);
 
-    DataResult<List<User>> findByUserName( String userName);
+    DataResult<List<User>> findByEmailContains ( String email );
 
-    DataResult<List<User>> findByUserNameContains(String userName);
+    DataResult<List<User>> findByEmailStartsWith(String email);
 
-    DataResult<List<User>> findByUserNameStartsWith(String userName);
+    DataResult<List<User>> findByEmailEndsWith(String email);
 
-    DataResult<List<User>> findByUserNameEndsWith(String userName);
 }
