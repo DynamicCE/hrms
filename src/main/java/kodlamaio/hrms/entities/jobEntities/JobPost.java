@@ -46,6 +46,8 @@ class JobPosts {
     @Column(name="application_deadline")
     private LocalDate applicationDeadline;
 
+    @Column(name="is_active")
+    private boolean isActive;
 
 
 }
