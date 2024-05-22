@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Table(name = "job_posts")
 public
-class JobPosts {
+class JobPost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

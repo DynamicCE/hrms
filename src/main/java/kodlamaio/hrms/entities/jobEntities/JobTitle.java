@@ -3,13 +3,11 @@ package kodlamaio.hrms.entities.jobEntities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
-
 @Entity
 @Data
 @Table(name = "job_titles")
 public
-class JobTitles {
+class JobTitle {
     @Id
     @Column(name = "id")
     private int id;

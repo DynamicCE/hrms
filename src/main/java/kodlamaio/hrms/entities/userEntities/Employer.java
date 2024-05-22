@@ -1,7 +1,7 @@
 package kodlamaio.hrms.entities.userEntities;
 
 import jakarta.persistence.*;
-import kodlamaio.hrms.entities.jobEntities.JobPosts;
+import kodlamaio.hrms.entities.jobEntities.JobPost;
 import lombok.Data;
 
 import java.util.List;
@@ -25,5 +25,5 @@ class Employer extends User {
 
     @OneToMany(mappedBy = "employer")
     private
-    List<JobPosts> jobPosts;
+    List<JobPost> jobPosts;
 }
