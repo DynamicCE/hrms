@@ -14,4 +14,6 @@ interface JobPostService {
  Result add ( JobPost jobPost);
  DataResult<List<JobPost>> getAll();
  Result delete (JobPost jobPost);
+ DataResult<List<JobPost>> findByIsActive(Boolean isActive);
+ DataResult<List<JobPost>> findByIsActiveOrderByApplicationDeadline( Boolean isActive );
 }

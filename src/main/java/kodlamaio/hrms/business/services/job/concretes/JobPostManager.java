@@ -42,4 +42,18 @@ class JobPostManager implements JobPostService {
         jobPostDao.delete ( jobPost );
         return new SuccessResult ( "başarıyla silindi" );
     }
+
+    @Override
+    public
+    DataResult<List<JobPost>> findByIsActive ( Boolean isActive ) {
+        return new SuccessDataResult<List<JobPost>> ( jobPostDao.findByIsActive ( isActive ),"İşlem başarılı" );
+    }
+
+    @Override
+    public
+    DataResult<List<JobPost>> findByIsActiveOrderByApplicationDeadline ( Boolean isActive ) {
+        return new SuccessDataResult<List<JobPost>> (jobPostDao.findByIsActiveOrderByApplicationDeadline ( isActive ),"İşlem başarılı"  );
+    }
+
+
 }

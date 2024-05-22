@@ -40,4 +40,15 @@ class JobPostController {
         Result result = jobPostService.delete ( jobPost );
         return ResponseEntity.ok ( result );
     }
+    @GetMapping("findByIsActive")
+    ResponseEntity<DataResult<List<JobPost>>> findByIsActive ( Boolean isActive ){
+        DataResult<List<JobPost>> result = jobPostService.findByIsActive ( isActive );
+        return ResponseEntity.ok ( result );
+    }
+
+    @GetMapping("findByIsActiveOrderByApplicationDeadline")
+    ResponseEntity<DataResult<List<JobPost>>> findByIsActiveOrderByApplicationDeadline(Boolean isActive){
+        DataResult<List<JobPost>> result = jobPostService.findByIsActiveOrderByApplicationDeadline ( isActive );
+        return ResponseEntity.ok ( result );
+    }
 }
