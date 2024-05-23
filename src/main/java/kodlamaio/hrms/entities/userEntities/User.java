@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public 
 class User {
     @Id
@@ -22,13 +23,6 @@ class User {
     @Column(name = "password")
     private String password;
 
-    @OneToOne(mappedBy = "user")
-    private Candidate candidates;
 
-    @OneToOne(mappedBy = "user")
-    private Employer employer;
-
-    @OneToOne(mappedBy = "user")
-    private Employee employee;
 
 };

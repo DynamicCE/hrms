@@ -21,7 +21,7 @@ class Candidate extends User {
     @Column(name = "birth_year",nullable = false)
     private int birthYear;
 
-    @OneToOne()
-    @JoinColumn(name="user_id")
-    private User user;
+//    @OneToOne()
+//    @JoinColumn(name="user_id")
+//    private User user;
 }
