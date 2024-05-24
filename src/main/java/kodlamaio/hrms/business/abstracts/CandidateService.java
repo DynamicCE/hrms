@@ -2,6 +2,7 @@ package kodlamaio.hrms.business.abstracts;
 
 import java.util.List;
 
+import kodlamaio.hrms.core.Result;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.entities.userEntities.Candidate;
@@ -10,5 +11,5 @@ import kodlamaio.hrms.entities.userEntities.Candidate;
 public
 interface CandidateService {
     List<Candidate> getAll ();
-    void register();
+    Result register( Candidate candidate);
 }
