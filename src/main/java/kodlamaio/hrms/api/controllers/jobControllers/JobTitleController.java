@@ -12,7 +12,7 @@ import javax.xml.crypto.Data;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/jobTitles")
+@RequestMapping("api/jobTitles/")
 public
 class JobTitleController {
     private

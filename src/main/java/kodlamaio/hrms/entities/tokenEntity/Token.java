@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entities;
+package kodlamaio.hrms.entities.tokenEntity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

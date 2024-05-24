@@ -32,12 +32,16 @@ class CandidateManager implements CandidateService{
         if(candidateDao.existsByEmail ( candidate.getEmail () ) || candidateDao.existsByIdentityNo ( candidate.getIdentityNo () )){
             return new ErrorResult ( "zaten kayıtlısınız" );
         }
-        boolean mernis = false;
-        if(mernis){
+        boolean mernis = fakeMernisVerification ( candidate );
+        if(!mernis){
             return new ErrorResult ( "doğrulama başarısız" );
         }
         candidateDao.save ( candidate );
         return new SuccessResult ( "başarıyla kaydoldunuz, e-postanızı kontrol ediniz" );
+    }
+
+    private boolean fakeMernisVerification(Candidate candidate){
+        return true; //fake servis her zaman başarılı
     }
 
 
