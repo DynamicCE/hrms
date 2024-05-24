@@ -18,4 +18,10 @@ public class EmailVerificationManager implements EmailVerificationService{
        return CandidateDao.existsByEmail(email);
     }
 
+    @Override
+    public
+    void createVerificationToken ( String email ) {
+
+    }
+
 }
