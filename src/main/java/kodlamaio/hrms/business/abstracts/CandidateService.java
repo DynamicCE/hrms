@@ -10,4 +10,5 @@ import kodlamaio.hrms.entities.userEntities.Candidate;
 public
 interface CandidateService {
     List<Candidate> getAll ();
+    void register();
 }

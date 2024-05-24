@@ -23,4 +23,10 @@ class CandidateManager implements CandidateService{
         throw new UnsupportedOperationException("Unimplemented method 'getAll'");
     }
 
+    @Override
+    public
+    void register () {
+        candidateDao.
+    }
+
 }
