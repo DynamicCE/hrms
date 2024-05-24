@@ -1,6 +1,7 @@
 package kodlamaio.hrms.business.services.token.concretes;
 
 import kodlamaio.hrms.business.services.token.abstracts.TokenService;
+import kodlamaio.hrms.core.*;
 import kodlamaio.hrms.dataAccess.tokenDao.TokenDao;
 import kodlamaio.hrms.entities.tokenEntity.Token;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,18 +21,23 @@ class TokenManager implements TokenService {
 
     @Override
     public
-    Token createToken ( String email ) {
+    Result createToken ( String email ) {
         String generatedToken = UUID.randomUUID().toString();
         Token token = new Token();
         token.setEmail(email);
         token.setToken(generatedToken);
-        return tokenDao.save(token);
+        tokenDao.save(token);
+        return new SuccessResult ( "token başarıyla oluşturuldu" );
     }
 
     @Override
     public
-    boolean validateToken ( String token ) {
+    DataResult<Token> validateToken ( String token ) {
         Token foundToken = tokenDao.findByToken ( token );
-        return (foundToken != null);
+        if(foundToken!= null){
+            return new SuccessDataResult<> ( foundToken,"Token geçerli" );
+        }else{
+            return new  ErrorDataResult<>( null,"Token geçersiz");
+        }
     }
 }
