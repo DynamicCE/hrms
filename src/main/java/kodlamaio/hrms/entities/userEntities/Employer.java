@@ -16,13 +16,13 @@ public class Employer {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "company_name")
+    @Column(name = "company_name",nullable = false)
     private String companyName;
 
-    @Column(name = "website")
+    @Column(name = "website",nullable = false)
     private String website;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number",nullable = false)
     private String phoneNumber;
 
 //    @OneToOne
