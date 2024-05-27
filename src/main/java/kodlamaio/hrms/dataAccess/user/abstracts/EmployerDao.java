@@ -7,5 +7,6 @@ import kodlamaio.hrms.entities.userEntities.Employer;
 
 @Repository 
 public interface EmployerDao extends JpaRepository<Employer, Long>{
-
+    boolean existsByEmail(String email);
+    boolean existsByPhoneNumber(String phoneNumber);
 }

@@ -11,11 +11,6 @@ import java.util.List;
 @Table(name = "employers")
 public class Employer extends User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
     @Column(name = "company_name",nullable = false)
     private String companyName;
 

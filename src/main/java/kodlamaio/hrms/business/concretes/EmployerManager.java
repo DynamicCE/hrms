@@ -3,6 +3,9 @@ package kodlamaio.hrms.business.concretes;
 import java.util.List;
 import java.util.Optional;
 
+import kodlamaio.hrms.core.ErrorResult;
+import kodlamaio.hrms.core.Result;
+import kodlamaio.hrms.core.SuccessResult;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
@@ -45,6 +48,17 @@ class EmployerManager implements EmployerService {
     public
     void delete (Employer employer) {
          employerDao.delete ( employer );
+    }
+
+    @Override
+    public
+    Result register ( Employer employer ) {
+        if(employerDao.existsByEmail ( employer.getEmail () ) ||employerDao.existsByPhoneNumber ( employer.getPhoneNumber () )){
+            return new ErrorResult ( "hata! zaten kayıtlsınız" );
+        }
+        employerDao.save ( employer );
+        return new SuccessResult ("başarıyla kaydolundu" );
+
     }
 
 

@@ -3,6 +3,7 @@ package kodlamaio.hrms.api.controllers.userControllers;
 import java.util.Optional;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
+import kodlamaio.hrms.core.Result;
 import kodlamaio.hrms.entities.userEntities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import kodlamaio.hrms.entities.userEntities.Employer;
 
 @RestController
-@RequestMapping("/api/employers")
+@RequestMapping("/api/employers/")
 public
 class EmployerController {
     @Autowired
@@ -24,29 +25,32 @@ class EmployerController {
         employerService.getAll ( );
     }
 
-    @GetMapping("/{getemployer}")
+    @GetMapping("{getemployer}")
     public
     ResponseEntity<Optional<Employer>> getEmployer ( @PathVariable Long id ) {
         return ResponseEntity.ok ( employerService.findById ( id ) );
     }
 
-    @PostMapping("/{createEmployer}")
+    @PostMapping("{createEmployer}")
     public
     ResponseEntity<Employer> createEmployer ( @RequestBody Employer foundEmployer ) {
         return ResponseEntity.ok ( employerService.create ( foundEmployer ) );
     }
 
-    @PutMapping({"/updateEmployer"})
+    @PutMapping({"updateEmployer"})
     public
     ResponseEntity<Employer> updateEmployer ( @PathVariable Long id, @RequestBody Employer foundEmployer ) {
         return ResponseEntity.ok ( employerService.update ( foundEmployer ) );
     }
 
-    @DeleteMapping({"/delete"})
+    @DeleteMapping({"delete"})
     public
     void deleteEmployer ( @RequestBody Employer foundEmployer ) {
         employerService.delete ( foundEmployer );
     }
 
-
+    @PostMapping("register")
+    ResponseEntity<Result> register (@RequestBody Employer employer ){
+        return ResponseEntity.ok ( employerService.register ( employer ) );
+    }
 }
