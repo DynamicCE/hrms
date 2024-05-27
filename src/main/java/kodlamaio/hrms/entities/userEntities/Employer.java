@@ -20,9 +20,8 @@ public class Employer extends User {
     @Column(name = "phone_number",nullable = false)
     private String phoneNumber;
 
-//    @OneToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @Column(name="approval_status",nullable = false)
+    private String approvalStatus = "PENDING";
 
     @OneToMany(mappedBy = "employer")
     private List<JobPost> jobPosts;

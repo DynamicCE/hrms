@@ -24,4 +24,6 @@ interface EmployerService {
     void delete (Employer employer);
 
     Result register( Employer employer);
+
+    Result approveEmployer(Long employerId);
 }

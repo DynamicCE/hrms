@@ -51,14 +51,33 @@ class EmployerManager implements EmployerService {
     }
 
     @Override
-    public
-    Result register ( Employer employer ) {
-        if(employerDao.existsByEmail ( employer.getEmail () ) ||employerDao.existsByPhoneNumber ( employer.getPhoneNumber () )){
-            return new ErrorResult ( "hata! zaten kayıtlsınız" );
+    public Result register(Employer employer) {
+        if (employerDao.existsByEmail(employer.getEmail()) || employerDao.existsByPhoneNumber(employer.getPhoneNumber())) {
+            return new ErrorResult("Hata! Zaten kayıtlısınız.");
         }
-        employerDao.save ( employer );
-        return new SuccessResult ("başarıyla kaydolundu" );
+        if (!validateEmailDomain(employer)) {
+            return new ErrorResult("Hata! Email domaini şirket domaini ile eşleşmiyor.");
+        }
+        employer.setApprovalStatus ( "PENDING" );
+        employerDao.save(employer);
+        return new SuccessResult("Başarıyla kaydolundu.");
+    }
 
+    private boolean validateEmailDomain(Employer employer) {
+        String emailDomain = employer.getEmail().substring(employer.getEmail().indexOf("@") + 1);
+        String websiteDomain = employer.getWebsite().replace("www.", "").replace("http://", "").replace("https://", "");
+        return emailDomain.equals(websiteDomain);
+    }
+
+    public Result approveEmployer(Long employerId){
+       Optional<Employer> foundEmployer = employerDao.findById ( employerId );
+       if(foundEmployer.isPresent ()){
+           Employer employer = foundEmployer.get ();
+           employer.setApprovalStatus ( "APPROVED" );
+           employerDao.save ( employer );
+           return new SuccessResult ( "İşveren başarıyla onaylandı" );
+       }
+       return new ErrorResult ( "İşveren bulunamadı" );
     }
 
 

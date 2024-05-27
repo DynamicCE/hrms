@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
 import kodlamaio.hrms.core.Result;
-import kodlamaio.hrms.entities.userEntities.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,7 @@ class EmployerController {
         employerService.getAll ( );
     }
 
-    @GetMapping("{getemployer}")
+    @GetMapping("{getemployer/{id}}")
     public
     ResponseEntity<Optional<Employer>> getEmployer ( @PathVariable Long id ) {
         return ResponseEntity.ok ( employerService.findById ( id ) );
@@ -37,7 +37,7 @@ class EmployerController {
         return ResponseEntity.ok ( employerService.create ( foundEmployer ) );
     }
 
-    @PutMapping({"updateEmployer"})
+    @PutMapping({"updateEmployer/{id}"})
     public
     ResponseEntity<Employer> updateEmployer ( @PathVariable Long id, @RequestBody Employer foundEmployer ) {
         return ResponseEntity.ok ( employerService.update ( foundEmployer ) );
@@ -52,5 +52,9 @@ class EmployerController {
     @PostMapping("register")
     ResponseEntity<Result> register (@RequestBody Employer employer ){
         return ResponseEntity.ok ( employerService.register ( employer ) );
+    }
+    @PostMapping("approveEmployer/")
+    ResponseEntity<Result> approveEmployer(@PathVariable Long employerId){
+        return ResponseEntity.ok ( employerService.approveEmployer ( employerId ) );
     }
 }
