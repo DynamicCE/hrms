@@ -1,10 +1,7 @@
 package kodlamaio.hrms.business.services.job.concretes;
 
 import kodlamaio.hrms.business.services.job.abstracts.JobTitleService;
-import kodlamaio.hrms.core.DataResult;
-import kodlamaio.hrms.core.Result;
-import kodlamaio.hrms.core.SuccessDataResult;
-import kodlamaio.hrms.core.SuccessResult;
+import kodlamaio.hrms.core.*;
 import kodlamaio.hrms.dataAccess.job.abstracts.JobTitleDao;
 import kodlamaio.hrms.entities.jobEntities.JobTitle;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +23,12 @@ class JobTitleManager implements JobTitleService {
     @Override
     public
     Result add ( JobTitle jobTitle ) {
-        jobTitleDao.save ( jobTitle );
-        return new SuccessResult ( "JobTitle eklendi" );
+        if(jobTitleDao.existsByJobTitle ( jobTitle )){
+            return new ErrorResult ("JobTitle zaten ekli");
+        }else{
+            jobTitleDao.save ( jobTitle );
+            return new SuccessResult ( "JobTitle eklendi" );
+        }
     }
 
     @Override

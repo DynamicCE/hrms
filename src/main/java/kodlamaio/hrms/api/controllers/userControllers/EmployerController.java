@@ -1,5 +1,6 @@
 package kodlamaio.hrms.api.controllers.userControllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
@@ -19,10 +20,10 @@ class EmployerController {
     private
     EmployerService employerService;
 
-    @GetMapping
+    @GetMapping("getall")
     public
-    void getAll () {
-        employerService.getAll ( );
+    ResponseEntity<List<Employer>> getAll () {
+        return ResponseEntity.ok ( employerService.getAll ( ) );
     }
 
     @GetMapping("{getemployer/{id}}")

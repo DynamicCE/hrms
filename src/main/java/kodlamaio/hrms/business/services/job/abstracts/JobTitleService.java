@@ -15,4 +15,5 @@ interface JobTitleService {
     Result add( JobTitle jobTitle);
     DataResult<List<JobTitle>> getAll();
     Result delete(JobTitle jobTitle);
+
 }

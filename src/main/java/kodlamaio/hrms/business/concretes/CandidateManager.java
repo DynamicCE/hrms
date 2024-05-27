@@ -2,9 +2,7 @@ package kodlamaio.hrms.business.concretes;
 
 import java.util.List;
 
-import kodlamaio.hrms.core.ErrorResult;
-import kodlamaio.hrms.core.Result;
-import kodlamaio.hrms.core.SuccessResult;
+import kodlamaio.hrms.core.*;
 import kodlamaio.hrms.dataAccess.user.abstracts.CandidateDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +19,9 @@ class CandidateManager implements CandidateService{
 
 
     @Override
-    public List<Candidate> getAll() {
-        candidateDao.findAll ();
-        throw new UnsupportedOperationException("Unimplemented method 'getAll'");
+    public
+    DataResult<List<Candidate>> getAll() {
+        return new SuccessDataResult<List<Candidate>> ( candidateDao.findAll (),"işlem başarılı" );
     }
 
     @Override
