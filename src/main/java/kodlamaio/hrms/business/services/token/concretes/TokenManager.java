@@ -2,7 +2,7 @@ package kodlamaio.hrms.business.services.token.concretes;
 
 import kodlamaio.hrms.business.services.token.abstracts.TokenService;
 import kodlamaio.hrms.core.*;
-import kodlamaio.hrms.dataAccess.tokenDao.TokenDao;
+import kodlamaio.hrms.dataAccess.token.TokenDao;
 import kodlamaio.hrms.entities.tokenEntity.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

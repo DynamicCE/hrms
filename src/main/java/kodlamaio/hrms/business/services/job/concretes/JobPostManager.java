@@ -7,6 +7,7 @@ import kodlamaio.hrms.entities.jobEntities.JobPost;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -51,7 +52,19 @@ public class JobPostManager implements JobPostService {
     }
 
     @Override
-    public Result deactivateJobPost(int jobId) {
+    public
+    Result activateJobPost ( Long jobId ) {
+        JobPost jobPost = jobPostDao.findById(jobId).orElse(null);
+        if (jobPost != null) {
+            jobPost.setActive(true);
+            jobPostDao.save(jobPost);
+            return new SuccessResult("İlan aktif hale getirildi.");
+        }
+        return new ErrorResult ("İlan bulunamadı.");
+    }
+
+    @Override
+    public Result deactivateJobPost(Long jobId) {
         JobPost jobPost = jobPostDao.findById(jobId).orElse(null);
         if (jobPost != null) {
             jobPost.setActive(false);
@@ -60,4 +73,12 @@ public class JobPostManager implements JobPostService {
         }
         return new ErrorResult ("İlan bulunamadı.");
     }
+
+    @Override
+    public
+    DataResult<List<JobPost>> findByApplicationDeadlineAfter ( LocalDate date ) {
+        return new SuccessDataResult<> ( jobPostDao.findByApplicationDeadlineAfter ( date ),"filtreleme yapıldı" ) ;
+    }
+
+
 }

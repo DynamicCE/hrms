@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -51,4 +52,24 @@ class JobPostController {
         DataResult<List<JobPost>> result = jobPostService.findByIsActiveOrderByApplicationDeadline ( isActive );
         return ResponseEntity.ok ( result );
     }
+    @GetMapping("getAllActiveByEmployer")
+    ResponseEntity<DataResult<List<JobPost>>> getAllActiveByEmployer( Long employerId){
+    return ResponseEntity.ok ( jobPostService.getAllActiveByEmployer ( employerId ) );
+    }
+
+    @PostMapping("activateJobPost")
+    ResponseEntity<Result> activateJobPost ( Long jobId ){
+        return ResponseEntity.ok ( jobPostService.activateJobPost ( jobId ) );
+    }
+
+    @PostMapping("deactivateJobPost")
+    ResponseEntity<Result> deactivateJobPost(Long jobId){
+        return ResponseEntity.ok ( jobPostService.deactivateJobPost ( jobId ) );
+    }
+    @PostMapping("findByApplicationDeadlineAfter")
+    ResponseEntity<DataResult<List<JobPost>>> findByApplicationDeadlineAfter( LocalDate date){
+        return ResponseEntity.ok ( jobPostService.findByApplicationDeadlineAfter ( date ) );
+    }
+
+
 }

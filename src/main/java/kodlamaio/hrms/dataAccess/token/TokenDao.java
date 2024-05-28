@@ -1,4 +1,4 @@
-package kodlamaio.hrms.dataAccess.tokenDao;
+package kodlamaio.hrms.dataAccess.token;
 
 import kodlamaio.hrms.entities.tokenEntity.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
