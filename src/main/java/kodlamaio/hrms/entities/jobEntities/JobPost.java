@@ -18,6 +18,7 @@ class JobPost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
     @ManyToOne()
@@ -45,6 +46,9 @@ class JobPost {
 
     @Column(name="application_deadline")
     private LocalDate applicationDeadline;
+
+    @Column(name = "posted_date", nullable = false)
+    private LocalDate postedDate = LocalDate.now();
 
     @Column(name="is_active")
     private boolean isActive;
