@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public
 class CityManager implements CityService {
-    private CityDao cityDao;
+    private final CityDao cityDao;
     @Autowired
     public
     CityManager ( CityDao cityDao ) {

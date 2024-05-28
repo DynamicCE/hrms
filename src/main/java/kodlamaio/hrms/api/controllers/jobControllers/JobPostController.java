@@ -18,6 +18,7 @@ public
 class JobPostController {
     private
     JobPostService jobPostService;
+
     @Autowired
     public
     JobPostController ( JobPostService jobPostService ) {
@@ -26,49 +27,59 @@ class JobPostController {
 
     @GetMapping("getAll")
     public
-    ResponseEntity<DataResult<List<JobPost>>> getAll(){
-        DataResult<List<JobPost>> result = jobPostService.getAll ();
+    ResponseEntity<DataResult<List<JobPost>>> getAll () {
+        DataResult<List<JobPost>> result = jobPostService.getAll ( );
         return ResponseEntity.ok ( result );
     }
 
     @PostMapping("add")
-    public ResponseEntity<Result> add(@RequestBody JobPost jobPost){
+    public
+    ResponseEntity<Result> add ( @RequestBody JobPost jobPost ) {
         Result result = jobPostService.add ( jobPost );
-        return ResponseEntity.ok ( result);
+        return ResponseEntity.ok ( result );
     }
+
     @DeleteMapping
-    public ResponseEntity<Result> delete(@RequestBody JobPost jobPost){
+    public
+    ResponseEntity<Result> delete ( @RequestBody JobPost jobPost ) {
         Result result = jobPostService.delete ( jobPost );
         return ResponseEntity.ok ( result );
     }
+
     @GetMapping("findByIsActive")
-    ResponseEntity<DataResult<List<JobPost>>> findByIsActive ( Boolean isActive ){
+    ResponseEntity<DataResult<List<JobPost>>> findByIsActive ( Boolean isActive ) {
         DataResult<List<JobPost>> result = jobPostService.findByIsActive ( isActive );
         return ResponseEntity.ok ( result );
     }
 
     @GetMapping("findByIsActiveOrderByApplicationDeadline")
-    ResponseEntity<DataResult<List<JobPost>>> findByIsActiveOrderByApplicationDeadline(Boolean isActive){
+    ResponseEntity<DataResult<List<JobPost>>> findByIsActiveOrderByApplicationDeadline ( Boolean isActive ) {
         DataResult<List<JobPost>> result = jobPostService.findByIsActiveOrderByApplicationDeadline ( isActive );
         return ResponseEntity.ok ( result );
     }
+
     @GetMapping("getAllActiveByEmployer")
-    ResponseEntity<DataResult<List<JobPost>>> getAllActiveByEmployer( Long employerId){
-    return ResponseEntity.ok ( jobPostService.getAllActiveByEmployer ( employerId ) );
+    ResponseEntity<DataResult<List<JobPost>>> getAllActiveByEmployer ( Long employerId ) {
+        DataResult<List<JobPost>> result = jobPostService.getAllActiveByEmployer ( employerId );
+        return ResponseEntity.ok ( result );
     }
 
     @PostMapping("activateJobPost")
-    ResponseEntity<Result> activateJobPost ( Long jobId ){
-        return ResponseEntity.ok ( jobPostService.activateJobPost ( jobId ) );
+    ResponseEntity<Result> activateJobPost ( Long jobId ) {
+        Result result = jobPostService.activateJobPost ( jobId );
+        return ResponseEntity.ok ( result );
     }
 
     @PostMapping("deactivateJobPost")
-    ResponseEntity<Result> deactivateJobPost(Long jobId){
-        return ResponseEntity.ok ( jobPostService.deactivateJobPost ( jobId ) );
+    ResponseEntity<Result> deactivateJobPost ( Long jobId ) {
+        Result result = jobPostService.deactivateJobPost ( jobId );
+        return ResponseEntity.ok ( result );
     }
+
     @PostMapping("findByApplicationDeadlineAfter")
-    ResponseEntity<DataResult<List<JobPost>>> findByApplicationDeadlineAfter( LocalDate date){
-        return ResponseEntity.ok ( jobPostService.findByApplicationDeadlineAfter ( date ) );
+    ResponseEntity<DataResult<List<JobPost>>> findByApplicationDeadlineAfter ( LocalDate date ) {
+        DataResult<List<JobPost>> result = jobPostService.findByApplicationDeadlineAfter ( date );
+        return ResponseEntity.ok ( result );
     }
 
 
