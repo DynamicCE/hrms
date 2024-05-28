@@ -35,11 +35,11 @@ class JobPost {
     @Column(name="city")
     private String city;
 
-    @Column(name="salary_min ")
-    private double salaryMin;
+    @Column(name="min_salary ")
+    private double minSalary;
 
-    @Column(name="salary_max")
-    private double salaryMax;
+    @Column(name="max_salary")
+    private double maxSalary;
 
     @Column(name="num_of_positions")
     private int numOfPositions;

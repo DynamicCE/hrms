@@ -13,20 +13,25 @@ public
 class TokenController {
     private
     TokenService tokenService;
+
     @Autowired
     public
     TokenController ( TokenService tokenService ) {
         this.tokenService = tokenService;
     }
+
     @PostMapping("create")
     public
-    ResponseEntity<Result> createToken(@RequestBody String email){
-        return ResponseEntity.ok ( tokenService.createToken ( email ) );
+    ResponseEntity<Result> createToken ( @RequestBody String email ) {
+        Result result = tokenService.createToken ( email );
+        return ResponseEntity.ok ( result );
     }
 
     @GetMapping("validate")
-    public ResponseEntity<DataResult> validateToken(@RequestBody String token){
-        return ResponseEntity.ok ( tokenService.validateToken ( token ) );
+    public
+    ResponseEntity<DataResult> validateToken ( @RequestBody String token ) {
+        DataResult result = tokenService.validateToken ( token );
+        return ResponseEntity.ok ( result );
     }
 
 }

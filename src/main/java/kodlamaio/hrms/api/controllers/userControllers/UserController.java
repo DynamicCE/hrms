@@ -30,21 +30,30 @@ class UserController {
     UserController ( UserService userService ) {
         this.userService = userService;
     }
+
     @GetMapping("findByEmail")
-    DataResult<User> findByEmail( String email){
-        return userService.findByEmail ( email );
+    ResponseEntity<DataResult<User>> findByEmail ( String email ) {
+        DataResult<User> result = userService.findByEmail ( email );
+        return ResponseEntity.ok ( result );
     }
+
     @GetMapping("findByEmailContains")
-    DataResult<List<User>> findByEmailContains ( String email ){
-        return userService.findByEmailContains ( email );
+    ResponseEntity<DataResult<List<User>>> findByEmailContains ( String email ) {
+        DataResult<List<User>> result = userService.findByEmailContains ( email );
+        return ResponseEntity.ok ( result );
     }
+
     @GetMapping("findByEmailStartsWith")
-    DataResult<List<User>> findByEmailStartsWith(String email){
-        return userService.findByEmailStartsWith ( email );
+    ResponseEntity<DataResult<List<User>>> findByEmailStartsWith ( String email ) {
+        DataResult<List<User>> result = userService.findByEmailStartsWith ( email );
+        return ResponseEntity.ok ( result ) ;
     }
+
     @GetMapping("findByEmailEndsWith")
-    DataResult<List<User>> findByEmailEndsWith(String email){
-        return userService.findByEmailEndsWith ( email );
+    ResponseEntity<DataResult<List<User>>>  findByEmailEndsWith ( String email ) {
+        DataResult<List<User>> result = userService.findByEmailEndsWith ( email );
+        return ResponseEntity.ok ( result ) ;
+
     }
 
 }

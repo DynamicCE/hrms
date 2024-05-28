@@ -3,9 +3,8 @@ package kodlamaio.hrms.business.concretes;
 import java.util.List;
 import java.util.Optional;
 
-import kodlamaio.hrms.core.ErrorResult;
-import kodlamaio.hrms.core.Result;
-import kodlamaio.hrms.core.SuccessResult;
+import kodlamaio.hrms.core.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
@@ -16,38 +15,53 @@ public
 class EmployerManager implements EmployerService {
     private EmployerDao employerDao;
 
+    @Autowired
     public
     EmployerManager ( EmployerDao employerDao ) {
         this.employerDao = employerDao;
     }
 
+
+
+
     @Override
-    public List<Employer> getAll() {
-        return employerDao.findAll ();
+    public DataResult<List<Employer>> getAll() {
+        List<Employer> employers = employerDao.findAll();
+        return new SuccessDataResult<>(employers, "Employers listed successfully");
+    }
+
+    @Override
+    public DataResult<Optional<Employer>> findById(Long id) {
+        Optional<Employer> employer = employerDao.findById(id);
+        if (employer.isPresent()) {
+            return new SuccessDataResult<>(employer, "Employer found successfully");
+        } else {
+            return new ErrorDataResult<>(Optional.empty(), "Employer not found");
+        }
+    }
+
+
+    @Override
+    public DataResult<Employer> create(Employer foundEmployer) {
+        Employer savedEmployer = employerDao.save(foundEmployer);
+        return new SuccessDataResult<> (savedEmployer, "Employer created successfully");
     }
 
     @Override
     public
-    Optional<Employer> findById ( Long id ) {
-        return employerDao.findById ( id );
+    DataResult<Employer> update( Employer foundEmployer) {
+        Employer updatedEmployer = employerDao.save(foundEmployer);
+        return new SuccessDataResult<>(updatedEmployer, "Employer updated successfully");
     }
 
     @Override
-    public
-    Employer create ( Employer foundEmployer ) {
-        return employerDao.save ( foundEmployer );
-    }
-
-    @Override
-    public
-    Employer update ( Employer foundEmployer ) {
-        return employerDao.save ( foundEmployer );
-    }
-
-    @Override
-    public
-    void delete (Employer employer) {
-         employerDao.delete ( employer );
+    public Result delete(Employer employer) {
+        try {
+            employerDao.delete(employer);
+            return new SuccessResult("Employer deleted successfully");
+        } catch (Exception e) {
+            return new ErrorResult("Error deleting employer: " + e.getMessage());
+        }
     }
 
     @Override

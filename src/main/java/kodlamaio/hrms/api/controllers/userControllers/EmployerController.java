@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
+import kodlamaio.hrms.core.DataResult;
 import kodlamaio.hrms.core.Result;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,41 +22,45 @@ class EmployerController {
     EmployerService employerService;
 
     @GetMapping("getall")
-    public
-    ResponseEntity<List<Employer>> getAll () {
-        return ResponseEntity.ok ( employerService.getAll ( ) );
+    public ResponseEntity<DataResult<List<Employer>>> getAll() {
+        DataResult<List<Employer>> result = employerService.getAll();
+        return ResponseEntity.ok(result);
     }
 
-    @GetMapping("{getemployer/{id}}")
-    public
-    ResponseEntity<Optional<Employer>> getEmployer ( @PathVariable Long id ) {
-        return ResponseEntity.ok ( employerService.findById ( id ) );
+    @GetMapping("getemployer/{id}")
+    public ResponseEntity<DataResult<Optional<Employer>>> getEmployer(@PathVariable Long id) {
+        DataResult<Optional<Employer>> result = employerService.findById(id);
+        return ResponseEntity.ok(result);
     }
 
-    @PostMapping("{createEmployer}")
-    public
-    ResponseEntity<Employer> createEmployer ( @RequestBody Employer foundEmployer ) {
-        return ResponseEntity.ok ( employerService.create ( foundEmployer ) );
+    @PostMapping("createEmployer")
+    public ResponseEntity<DataResult<Employer>> createEmployer(@RequestBody Employer foundEmployer) {
+        DataResult<Employer> result = employerService.create(foundEmployer);
+        return ResponseEntity.ok(result);
     }
 
-    @PutMapping({"updateEmployer/{id}"})
-    public
-    ResponseEntity<Employer> updateEmployer ( @PathVariable Long id, @RequestBody Employer foundEmployer ) {
-        return ResponseEntity.ok ( employerService.update ( foundEmployer ) );
+    @PutMapping("updateEmployer/{id}")
+    public ResponseEntity<DataResult<Employer>> updateEmployer(@PathVariable Long id, @RequestBody Employer foundEmployer) {
+        DataResult<Employer> result = employerService.update(foundEmployer);
+        return ResponseEntity.ok(result);
     }
 
-    @DeleteMapping({"delete"})
-    public
-    void deleteEmployer ( @RequestBody Employer foundEmployer ) {
-        employerService.delete ( foundEmployer );
+    @DeleteMapping("delete")
+    public ResponseEntity<Result> deleteEmployer(@RequestBody Employer foundEmployer) {
+        Result result = employerService.delete(foundEmployer);
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping("register")
-    ResponseEntity<Result> register (@RequestBody Employer employer ){
-        return ResponseEntity.ok ( employerService.register ( employer ) );
+    public ResponseEntity<Result> register(@RequestBody Employer employer) {
+        Result result = employerService.register(employer);
+        return ResponseEntity.ok(result);
     }
-    @PostMapping("approveEmployer/")
-    ResponseEntity<Result> approveEmployer(@PathVariable Long employerId){
-        return ResponseEntity.ok ( employerService.approveEmployer ( employerId ) );
+
+    @PostMapping("approveEmployer/{employerId}")
+    public ResponseEntity<Result> approveEmployer(@PathVariable Long employerId) {
+        Result result = employerService.approveEmployer(employerId);
+        return ResponseEntity.ok(result);
     }
+
 }
