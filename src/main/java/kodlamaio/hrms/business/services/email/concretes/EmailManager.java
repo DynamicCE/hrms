@@ -6,6 +6,9 @@ import kodlamaio.hrms.business.services.email.abstracts.EmailService;
 @Service
 public class EmailManager implements EmailService{
 
+
+
+
     @Override
     public void sendEmail(String email, String message) {
         // TODO Auto-generated method stub

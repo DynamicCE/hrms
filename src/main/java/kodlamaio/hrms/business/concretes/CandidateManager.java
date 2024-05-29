@@ -2,6 +2,7 @@ package kodlamaio.hrms.business.concretes;
 
 import java.util.List;
 
+import kodlamaio.hrms.business.services.email.abstracts.EmailVerificationService;
 import kodlamaio.hrms.core.*;
 import kodlamaio.hrms.dataAccess.user.abstracts.CandidateDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,16 @@ import kodlamaio.hrms.entities.userEntities.Candidate;
 @Service
 public
 class CandidateManager implements CandidateService{
-    @Autowired
+
     private
     CandidateDao candidateDao;
-
+    private EmailVerificationService emailVerificationService;
+    @Autowired
+    public
+    CandidateManager ( CandidateDao candidateDao, EmailVerificationService emailVerificationService ) {
+        this.candidateDao = candidateDao;
+        this.emailVerificationService = emailVerificationService;
+    }
 
     @Override
     public
@@ -36,6 +43,12 @@ class CandidateManager implements CandidateService{
         }
         candidateDao.save ( candidate );
         return new SuccessResult ( "başarıyla kaydoldunuz, e-postanızı kontrol ediniz" );
+    }
+
+    @Override
+    public
+    boolean verifyEmail ( String token ) {
+        return emailVerificationService.verifyEmail(token);
     }
 
     private boolean fakeMernisVerification(Candidate candidate){

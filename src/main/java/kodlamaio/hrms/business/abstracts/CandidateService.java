@@ -13,4 +13,5 @@ public
 interface CandidateService {
     DataResult<List<Candidate>> getAll ();
     Result register( Candidate candidate);
+    boolean verifyEmail(String token);
 }
