@@ -19,10 +19,11 @@ class JobPost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+
     private long id;
 
     @ManyToOne()
-    @JoinColumn(name="employer_id")
+    @JoinColumn(name="employer_id", nullable = false)
     private
     Employer employer;
 

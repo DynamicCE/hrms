@@ -2,13 +2,17 @@ package kodlamaio.hrms.entities.userEntities;
 
 import jakarta.persistence.*;
 import kodlamaio.hrms.entities.jobEntities.JobPost;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "employers")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Employer extends User {
 
     @Column(name = "company_name",nullable = false)

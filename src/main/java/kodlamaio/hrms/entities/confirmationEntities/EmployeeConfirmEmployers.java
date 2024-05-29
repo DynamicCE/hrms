@@ -8,10 +8,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import kodlamaio.hrms.entities.userEntities.Employer;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "employee_confirms_employer")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public
 class EmployeeConfirmEmployers {
     @Id

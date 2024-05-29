@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Table(name = "cities")
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "cities")
 public
 class City {
     @Id

@@ -1,11 +1,15 @@
 package kodlamaio.hrms.entities.userEntities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Table(name = "candidates")
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public
 class Candidate extends User {
 

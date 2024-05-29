@@ -1,10 +1,15 @@
 package kodlamaio.hrms.entities.tokenEntity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Table(name="tokens")
+@NoArgsConstructor
+@AllArgsConstructor
 public
 class Token {
     @Id

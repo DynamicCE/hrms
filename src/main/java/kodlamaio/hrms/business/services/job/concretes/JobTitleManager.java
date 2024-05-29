@@ -23,7 +23,7 @@ class JobTitleManager implements JobTitleService {
     @Override
     public
     Result add ( JobTitle jobTitle ) {
-        if(jobTitleDao.existsByJobTitle ( jobTitle )){
+        if(jobTitleDao.existsByJobTitle ( jobTitle.getJobTitle () )){
             return new ErrorResult ("JobTitle zaten ekli");
         }else{
             jobTitleDao.save ( jobTitle );

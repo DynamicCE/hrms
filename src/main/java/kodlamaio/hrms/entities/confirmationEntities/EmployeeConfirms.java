@@ -10,10 +10,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import kodlamaio.hrms.entities.userEntities.Employee;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "employee_confirms")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public
 class EmployeeConfirms {
     @Id
