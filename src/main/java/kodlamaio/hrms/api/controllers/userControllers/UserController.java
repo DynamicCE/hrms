@@ -4,8 +4,10 @@ package kodlamaio.hrms.api.controllers.userControllers;
 import java.util.List;
 import java.util.Optional;
 
+import jakarta.validation.Valid;
 import kodlamaio.hrms.core.DataResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,8 +32,8 @@ class UserController {
         return ResponseEntity.ok ( result );
     }
 
-    @PostMapping("add")
-    ResponseEntity<DataResult<User>> add (@RequestBody User user ) {
+    @PostMapping(value = "add")
+    ResponseEntity<DataResult<User>> add (@Valid @RequestBody User user ) {
         DataResult<User> result = userService.add ( user );
         return ResponseEntity.ok ( result );
     }

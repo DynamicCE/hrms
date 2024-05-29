@@ -17,6 +17,14 @@ class Result {
         this.message = message;
     }
 
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
 
 
 }
