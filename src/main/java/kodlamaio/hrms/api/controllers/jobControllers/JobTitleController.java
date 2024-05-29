@@ -5,6 +5,7 @@ import kodlamaio.hrms.core.DataResult;
 import kodlamaio.hrms.core.Result;
 import kodlamaio.hrms.entities.jobEntities.JobTitle;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,7 @@ class JobTitleController {
         return ResponseEntity.ok ( result );
     }
 
-    @PostMapping("add")
+    @PostMapping(value = "add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Result> add( @RequestBody JobTitle jobTitle ){
         Result result = jobTitleService.add ( jobTitle );
         return ResponseEntity.ok ( result );

@@ -40,6 +40,12 @@ class EmployerManager implements EmployerService {
         }
     }
 
+    @Override
+    public
+    DataResult<Employer> add ( Employer employer ) {
+        return new SuccessDataResult<> ( employerDao.save ( employer ) ,"başarıyla eklendi");
+    }
+
 
     @Override
     public DataResult<Employer> create(Employer foundEmployer) {

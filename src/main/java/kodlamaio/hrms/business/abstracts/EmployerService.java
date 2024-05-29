@@ -16,6 +16,7 @@ interface EmployerService {
 
     DataResult<List<Employer>> getAll();
     DataResult<Optional<Employer>> findById(Long id);
+    DataResult<Employer> add(Employer employer);
     DataResult<Employer> create(Employer employer);
     DataResult<Employer> update(Employer employer);
     Result delete(Employer employer);

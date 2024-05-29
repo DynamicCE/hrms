@@ -13,6 +13,8 @@ interface UserService {
 
     DataResult<User> findByEmail(String email);
 
+    DataResult<User> add(User user);
+
     DataResult<List<User>> findByEmailContains ( String email );
 
     DataResult<List<User>> findByEmailStartsWith(String email);

@@ -25,6 +25,12 @@ public class UserManager implements UserService {
 
     @Override
     public
+    DataResult<User> add ( User user ) {
+        return new SuccessDataResult<> ( userDao.save ( user ),"başarıyla eklendi" );
+    }
+
+    @Override
+    public
     DataResult<List<User>> findByEmailContains ( String email ) {
         return new SuccessDataResult<List<User>> (userDao.findByEmailContains ( email ),"işlem başarılı");
     }

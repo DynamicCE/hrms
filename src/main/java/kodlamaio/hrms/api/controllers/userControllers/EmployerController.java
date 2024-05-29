@@ -27,6 +27,12 @@ class EmployerController {
         return ResponseEntity.ok(result);
     }
 
+    @PostMapping("add")
+    ResponseEntity<DataResult<Employer>> add (@RequestBody Employer employer ){
+        DataResult<Employer> result = employerService.add ( employer );
+        return ResponseEntity.ok ( result );
+    }
+
     @GetMapping("getemployer/{id}")
     public ResponseEntity<DataResult<Optional<Employer>>> getEmployer(@PathVariable Long id) {
         DataResult<Optional<Employer>> result = employerService.findById(id);
