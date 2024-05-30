@@ -31,10 +31,13 @@ class TokenManager implements TokenService {
     }
 
     @Override
-    public
-    boolean validateToken ( String verificationToken ) {
+    public DataResult<VerificationToken> validateToken(String verificationToken) {
         VerificationToken foundToken = tokenDao.findByToken(verificationToken);
-        return foundToken != null;
+        if (foundToken != null) {
+            return new SuccessDataResult<>(foundToken, "Token geçerli");
+        } else {
+            return new ErrorDataResult<>(null, "Token geçersiz");
+        }
     }
 
     @Override

@@ -45,19 +45,28 @@ class CandidateManager implements CandidateService{
     }
 
     @Override
-    public
-    Result register ( Candidate candidate ) {
-        if(candidateDao.existsByEmail ( candidate.getEmail () ) || candidateDao.existsByIdentityNo ( candidate.getIdentityNo () )){
-            return new ErrorResult ( "zaten kayıtlısınız" );
+    public Result register(Candidate candidate) {
+        if (candidateDao.existsByEmail(candidate.getEmail()) || candidateDao.existsByIdentityNo(candidate.getIdentityNo())) {
+            return new ErrorResult("zaten kayıtlısınız");
         }
-        boolean mernis = fakeMernisVerification ( candidate );
-        if(!mernis){
-            return new ErrorResult ( "doğrulama başarısız" );
+        boolean mernis = fakeMernisVerification(candidate);
+        if (!mernis) {
+            return new ErrorResult("doğrulama başarısız");
         }
-        candidateDao.save ( candidate );
-        return new SuccessResult ( "başarıyla kaydoldunuz, e-postanızı kontrol ediniz" );
+        candidateDao.save(candidate);
+        tokenService.createToken(candidate.getEmail());
+        return new SuccessResult("başarıyla kaydoldunuz, e-postanızı kontrol ediniz");
     }
 
+    @Override
+    public boolean verifyEmail(String token) {
+        DataResult<VerificationToken> result = tokenService.validateToken(token);
+        if (result.isSuccess()) {
+            tokenService.delete(result.getData().getToken()); // Token doğrulandıktan sonra sil
+            return true;
+        }
+        return false;
+    }
 
 
     private boolean fakeMernisVerification(Candidate candidate){

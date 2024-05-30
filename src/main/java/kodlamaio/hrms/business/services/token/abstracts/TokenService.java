@@ -9,6 +9,6 @@ import org.springframework.stereotype.Service;
 public
 interface TokenService {
     Result createToken( String email);
-    boolean validateToken( String verificationToken);
+    DataResult<VerificationToken> validateToken(String verificationToken);
     Result delete(String verificationToken);
 }
