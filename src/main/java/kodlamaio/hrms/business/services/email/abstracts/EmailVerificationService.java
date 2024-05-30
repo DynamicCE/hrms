@@ -7,7 +7,5 @@ public
 interface EmailVerificationService {
     public
     boolean checkMail ( String email );
-    void createVerificationToken ( String email );
-    boolean verifyEmail(String token);
 
 }

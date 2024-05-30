@@ -23,25 +23,8 @@ public class EmailVerificationManager implements EmailVerificationService{
        return CandidateDao.existsByEmail(email);
     }
 
-    @Override
-    public
-    void createVerificationToken ( String email ) {
-        String token = UUID.randomUUID().toString();
-        verificationTokens.put(token, email);
-        // Tokeni oluşturduktan sonra e-posta doğrulama mesajı gönderilir
-        EmailService emailService = new EmailManager();
-        emailService.sendVerificationEmail(email, token);
-    }
 
-    @Override
-    public boolean verifyEmail(String token) {
-        if (verificationTokens.containsKey(token)) {
-            String email = verificationTokens.get(token);
-            verificationTokens.remove(token);
-            System.out.println("E-posta doğrulandı: " + email);
-            return true;
-        }
-        return false;
-    }
+
+
 
 }

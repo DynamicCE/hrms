@@ -1,6 +1,7 @@
 package kodlamaio.hrms.api.controllers.userControllers;
 
 import kodlamaio.hrms.business.abstracts.CandidateService;
+import kodlamaio.hrms.business.services.token.abstracts.TokenService;
 import kodlamaio.hrms.core.DataResult;
 import kodlamaio.hrms.core.ErrorResult;
 import kodlamaio.hrms.core.Result;
@@ -16,13 +17,14 @@ import java.util.List;
 @RequestMapping("/api/candidates/")
 public
 class CandidateController {
-    private
+    private final
     CandidateService candidateService;
-
+    private final TokenService tokenService;
     @Autowired
     public
-    CandidateController ( CandidateService candidateService ) {
+    CandidateController ( CandidateService candidateService, TokenService tokenService ) {
         this.candidateService = candidateService;
+        this.tokenService = tokenService;
     }
     @GetMapping("getall")
     ResponseEntity<DataResult<List<Candidate>>> getAll (){
@@ -30,14 +32,16 @@ class CandidateController {
     }
 
     @PostMapping("register")
-    public
-    ResponseEntity<Result> register(@RequestBody Candidate candidate ){
-        return ResponseEntity.ok ( candidateService.register ( candidate ) );
+    public ResponseEntity<Result> register(@RequestBody Candidate candidate) {
+        Result result = candidateService.register(candidate);
+        if (result.isSuccess()) {
+            tokenService.createToken(candidate.getEmail());
+        }
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("verify-email")
     public ResponseEntity<Result> verifyEmail(@RequestParam String token) {
-        boolean result = candidateService.verifyEmail(token);
-        return result ? ResponseEntity.ok(new SuccessResult ("E-posta başarıyla doğrulandı.")) : ResponseEntity.badRequest().body(new ErrorResult ("Geçersiz token."));
-    }
+        boolean result = tokenService.validateToken(token).isSuccess();
+        return result ? ResponseEntity.ok(new SuccessResult("E-posta başarıyla doğrulandı.")) : ResponseEntity.badRequest().body(new ErrorResult("Geçersiz token."));    }
 }

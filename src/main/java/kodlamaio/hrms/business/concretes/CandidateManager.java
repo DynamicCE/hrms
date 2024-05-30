@@ -3,13 +3,16 @@ package kodlamaio.hrms.business.concretes;
 import java.util.List;
 
 import kodlamaio.hrms.business.services.email.abstracts.EmailVerificationService;
+import kodlamaio.hrms.business.services.token.abstracts.TokenService;
 import kodlamaio.hrms.core.*;
 import kodlamaio.hrms.dataAccess.user.abstracts.CandidateDao;
+import kodlamaio.hrms.entities.tokenEntity.VerificationToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.CandidateService;
-import kodlamaio.hrms.dataAccess.user.abstracts.UserDao;
+
+
 import kodlamaio.hrms.entities.userEntities.Candidate;
 @Service
 public
@@ -18,11 +21,21 @@ class CandidateManager implements CandidateService{
     private
     CandidateDao candidateDao;
     private EmailVerificationService emailVerificationService;
+    private TokenService tokenService;
+
+    public
+    CandidateManager ( CandidateDao candidateDao, EmailVerificationService emailVerificationService, TokenService tokenService ) {
+        this.candidateDao = candidateDao;
+        this.emailVerificationService = emailVerificationService;
+        this.tokenService = tokenService;
+    }
+
     @Autowired
     public
     CandidateManager ( CandidateDao candidateDao, EmailVerificationService emailVerificationService ) {
         this.candidateDao = candidateDao;
         this.emailVerificationService = emailVerificationService;
+
     }
 
     @Override
@@ -45,11 +58,7 @@ class CandidateManager implements CandidateService{
         return new SuccessResult ( "başarıyla kaydoldunuz, e-postanızı kontrol ediniz" );
     }
 
-    @Override
-    public
-    boolean verifyEmail ( String token ) {
-        return emailVerificationService.verifyEmail(token);
-    }
+
 
     private boolean fakeMernisVerification(Candidate candidate){
         return true; //fake servis her zaman başarılı

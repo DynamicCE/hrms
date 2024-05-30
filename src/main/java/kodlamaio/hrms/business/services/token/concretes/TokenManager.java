@@ -32,12 +32,17 @@ class TokenManager implements TokenService {
 
     @Override
     public
-    DataResult<VerificationToken> validateToken ( String token ) {
-        VerificationToken foundToken = tokenDao.findByToken ( token );
-        if(foundToken!= null){
-            return new SuccessDataResult<> ( foundToken,"Token geçerli" );
-        }else{
-            return new  ErrorDataResult<>( null,"Token geçersiz");
-        }
+    boolean validateToken ( String verificationToken ) {
+        VerificationToken foundToken = tokenDao.findByToken(verificationToken);
+        return foundToken != null;
     }
+
+    @Override
+    public
+    Result delete ( String verificationToken ) {
+        tokenDao.delete ( verificationToken );
+        return new SuccessResult ( "Token silindi" ) ;
+    }
+
+
 }
