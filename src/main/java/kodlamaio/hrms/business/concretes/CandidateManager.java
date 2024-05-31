@@ -6,7 +6,7 @@ import kodlamaio.hrms.business.services.email.abstracts.EmailVerificationService
 import kodlamaio.hrms.business.services.token.abstracts.TokenService;
 import kodlamaio.hrms.core.*;
 import kodlamaio.hrms.dataAccess.user.abstracts.CandidateDao;
-import kodlamaio.hrms.entities.tokenEntity.VerificationToken;
+import kodlamaio.hrms.entities.tokenEntities.VerificationToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entities.tokenEntity;
+package kodlamaio.hrms.entities.tokenEntities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
