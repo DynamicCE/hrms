@@ -100,5 +100,11 @@ class EmployerManager implements EmployerService {
        return new ErrorResult ( "İşveren bulunamadı" );
     }
 
+    @Override
+    public
+    Employer getCurrentEmployer () {
+        return employerDao.findById(1L).orElse(null);
+    }
+
 
 }
