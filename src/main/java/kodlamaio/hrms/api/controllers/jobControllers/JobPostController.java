@@ -65,6 +65,12 @@ class JobPostController {
         return ResponseEntity.ok ( result );
     }
 
+    @GetMapping("findActiveJobPosts")
+    ResponseEntity<DataResult<List<JobPostDto>>> findActiveJobPosts(){
+        DataResult<List<JobPostDto>> result =jobPostService.findActiveJobPosts ();
+        return ResponseEntity.ok ( result );
+    }
+
     @GetMapping("findByIsActiveOrderByApplicationDeadline")
     ResponseEntity<DataResult<List<JobPost>>> findByIsActiveOrderByApplicationDeadline ( Boolean isActive ) {
         DataResult<List<JobPost>> result = jobPostService.findByIsActiveOrderByApplicationDeadline ( isActive );
@@ -95,24 +101,7 @@ class JobPostController {
         return ResponseEntity.ok ( result );
     }
 
-    private JobPost convertToEntity( JobPostDto jobPostDto) {
-        JobPost jobPost = new JobPost();
-        jobPost.setJobTitle(jobPostDto.getJobTitle());
-        jobPost.setDescription(jobPostDto.getJobDescription());
-        jobPost.setCity(jobPostDto.getCity());
-        jobPost.setMinSalary(jobPostDto.getMinSalary());
-        jobPost.setMaxSalary(jobPostDto.getMaxSalary());
-        jobPost.setNumOfPositions(jobPostDto.getOpenPositions());
-        jobPost.setApplicationDeadline(jobPostDto.getApplicationDeadline());
-
-        // postedDate ve isActive gibi alanlar burada default olarak ayarlanabilir
-        jobPost.setPostedDate(LocalDate.now());
-        jobPost.setActive(true);
-        Employer employer = employerService.getCurrentEmployer();
-        jobPost.setEmployer(employer);
 
 
-        return jobPost;
-    }
 
 }

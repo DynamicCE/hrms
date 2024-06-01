@@ -13,9 +13,11 @@ public
 class JobPostDto {
     private String jobTitle;
     private String jobDescription;
+    private String companyName;
     private String city;
     private Double minSalary;
     private Double maxSalary;
     private Integer openPositions;
     private LocalDate applicationDeadline;
+    private LocalDate postedDate;
 }
