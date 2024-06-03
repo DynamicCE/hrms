@@ -2,7 +2,6 @@ package kodlamaio.hrms.entities.userEntities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import kodlamaio.hrms.entities.commonEntities.School;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
