@@ -6,11 +6,11 @@ import kodlamaio.hrms.core.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.common.CityDao;
 import kodlamaio.hrms.entities.commonEntities.City;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Repository
+@Service
 public
 class CityManager implements CityService {
     private final CityDao cityDao;

@@ -33,8 +33,7 @@ class Candidate extends User {
     private int birthYear;
 
 
-    @OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL)
-    private List<School> schools;
+
 //    @OneToOne()
 //    @JoinColumn(name="user_id")
 //    private User user;
