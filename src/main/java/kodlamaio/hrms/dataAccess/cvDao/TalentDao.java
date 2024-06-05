@@ -4,5 +4,5 @@ import kodlamaio.hrms.entities.cvEntities.Talent;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public
-interface TalentDao extends JpaRepository<Talent,Integer> {
+interface TalentDao extends JpaRepository<Talent,Long> {
 }

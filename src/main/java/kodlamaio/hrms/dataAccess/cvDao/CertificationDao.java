@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import kodlamaio.hrms.entities.cvEntities.Certification;
 
 @Repository
-public interface CertificationDao extends JpaRepository<Certification, Integer> {
+public interface CertificationDao extends JpaRepository<Certification, Long> {
 }

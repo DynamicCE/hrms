@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import kodlamaio.hrms.entities.cvEntities.ImageInfo;
 
 @Repository
-public interface ImageInfoDao extends JpaRepository<ImageInfo, Integer> {
+public interface ImageInfoDao extends JpaRepository<ImageInfo, Long> {
 }

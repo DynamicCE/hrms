@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import kodlamaio.hrms.entities.cvEntities.EducationInfo;
 
+import java.util.List;
+
 @Repository
-public interface EducationInfoDao extends JpaRepository<EducationInfo, Integer> {
+public interface EducationInfoDao extends JpaRepository<EducationInfo, Long> {
+    List<EducationInfo> findAllByCandidateIdOrderByGraduationYearDesc( Long candidateId);
 }

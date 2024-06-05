@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import kodlamaio.hrms.entities.cvEntities.CoverLetter;
 
 @Repository
-public interface CoverLetterDao extends JpaRepository<CoverLetter, Integer> {
+public interface CoverLetterDao extends JpaRepository<CoverLetter, Long> {
 }

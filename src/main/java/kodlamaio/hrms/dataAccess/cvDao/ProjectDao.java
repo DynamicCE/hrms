@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import kodlamaio.hrms.entities.cvEntities.Project;
 
 @Repository
-public interface ProjectDao extends JpaRepository<Project, Integer> {
+public interface ProjectDao extends JpaRepository<Project, Long> {
 }

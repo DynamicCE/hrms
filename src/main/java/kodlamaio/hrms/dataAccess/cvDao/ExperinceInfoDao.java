@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import kodlamaio.hrms.entities.cvEntities.ExperienceInfo;
 
 @Repository
-public interface ExperinceInfoDao extends JpaRepository<ExperienceInfo, Integer> {
+public interface ExperinceInfoDao extends JpaRepository<ExperienceInfo, Long> {
 }

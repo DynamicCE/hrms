@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import kodlamaio.hrms.entities.cvEntities.WebAddress;
 
 @Repository
-public interface WebAddressDao extends JpaRepository<WebAddress, Integer> {
+public interface WebAddressDao extends JpaRepository<WebAddress, Long> {
 }

@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import kodlamaio.hrms.entities.cvEntities.Language;
 
 @Repository
-public interface LanguageDao extends JpaRepository<Language, Integer> {
+public interface LanguageDao extends JpaRepository<Language, Long> {
 }
