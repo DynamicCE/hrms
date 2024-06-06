@@ -80,6 +80,17 @@ class CandidateManager implements CandidateService{
         return new SuccessResult("Fotoğraf başarıyla eklendi");
     }
 
+    @Override
+    public Result updateGithubAddress(Long candidateId, String githubAddress) {
+        Candidate candidate = candidateDao.findById(candidateId).orElse(null);
+        if (candidate == null) {
+            return new ErrorResult("Aday bulunamadı");
+        }
+        candidate.setGithubAddress(githubAddress);
+        candidateDao.save(candidate);
+        return new SuccessResult("GitHub adresi başarıyla güncellendi");
+    }
+
 
     private boolean fakeMernisVerification(Candidate candidate){
         return true; //fake servis her zaman başarılı

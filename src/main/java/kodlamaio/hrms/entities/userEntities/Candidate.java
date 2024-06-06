@@ -35,7 +35,8 @@ class Candidate extends User {
     @Column(name="photo_url")
     private String photoUrl;
 
-
+    @Column(name = "github_address")
+    private String githubAddress;
 
 //    @OneToOne()
 //    @JoinColumn(name="user_id")

@@ -19,13 +19,11 @@ import java.util.List;
 @RequestMapping("/api/candidates/")
 public
 class CandidateController {
-    private final
-    CandidateService candidateService;
+    private final CandidateService candidateService;
     private final TokenService tokenService;
     private final CloudinaryService cloudinaryService;
     @Autowired
-    public
-    CandidateController ( CandidateService candidateService, TokenService tokenService, CloudinaryService cloudinaryService ) {
+    public CandidateController ( CandidateService candidateService, TokenService tokenService, CloudinaryService cloudinaryService ) {
         this.candidateService = candidateService;
         this.tokenService = tokenService;
         this.cloudinaryService = cloudinaryService;
@@ -58,5 +56,10 @@ class CandidateController {
         } else {
             return ResponseEntity.status(500).body(result.getMessage());
         }
+    }
+    @PutMapping("{id}/github")
+    public ResponseEntity<Result> updateGithubAddress(@PathVariable Long id, @RequestParam String githubAddress) {
+        Result result = candidateService.updateGithubAddress(id, githubAddress);
+        return result.isSuccess() ? ResponseEntity.ok(result) : ResponseEntity.badRequest().body(result);
     }
 }
