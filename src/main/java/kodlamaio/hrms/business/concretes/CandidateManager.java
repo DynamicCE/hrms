@@ -69,6 +69,17 @@ class CandidateManager implements CandidateService{
         return false;
     }
 
+    @Override
+    public Result addPhotoUrl(Long candidateId, String url) {
+        Candidate candidate = candidateDao.findById(candidateId).orElse(null);
+        if (candidate == null) {
+            return new ErrorResult("Aday bulunamadı");
+        }
+        candidate.setPhotoUrl(url);
+        candidateDao.save(candidate);
+        return new SuccessResult("Fotoğraf başarıyla eklendi");
+    }
+
 
     private boolean fakeMernisVerification(Candidate candidate){
         return true; //fake servis her zaman başarılı

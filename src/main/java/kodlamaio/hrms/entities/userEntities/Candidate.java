@@ -32,6 +32,9 @@ class Candidate extends User {
     @NotBlank(message = "Doğum yılı alanı boş bırakılamaz!")
     private int birthYear;
 
+    @Column(name="photo_url")
+    private String photoUrl;
+
 
 
 //    @OneToOne()
