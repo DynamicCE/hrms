@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/certification/")
+@RequestMapping("api/coverLetter/")
 public
-class CertificationController {
+class CoverLetterInfoController {
 }

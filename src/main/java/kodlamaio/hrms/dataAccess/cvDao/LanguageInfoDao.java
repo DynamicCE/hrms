@@ -3,8 +3,9 @@ package kodlamaio.hrms.dataAccess.cvDao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import kodlamaio.hrms.entities.cvEntities.Certification;
+import kodlamaio.hrms.entities.cvEntities.LanguageInfo;
 
 @Repository
-public interface CertificationDao extends JpaRepository<Certification, Long> {
+public interface LanguageInfoDao extends JpaRepository<LanguageInfo, Long> {
+
 }
