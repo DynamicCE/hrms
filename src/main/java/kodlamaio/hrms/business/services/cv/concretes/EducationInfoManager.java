@@ -36,11 +36,12 @@ class EducationInfoManager implements EducationInfoService {
     public
     DataResult<List<EducationInfo>> getAllByCandidateId ( Long candidateId ) {
         List<EducationInfo> educationInfos = educationInfoDao.findAllByCandidateIdOrderByGraduationYearDesc ( candidateId );
-        for(EducationInfo info : educationInfos){
-            if(info.getGraduationYear ()==null){
+        for (EducationInfo info : educationInfos) {
+            if (info.getGraduationYear ( ) == null) {
                 info.setGraduationYear ( Integer.MAX_VALUE );
+                info.setSchoolStatus ( "Devam Ediyor" );
             }
         }
-        return new SuccessDataResult<> (educationInfos,"Eğitim bilgileri getirildi"  );
+        return new SuccessDataResult<> ( educationInfos, "Eğitim bilgileri getirildi" );
     }
 }
