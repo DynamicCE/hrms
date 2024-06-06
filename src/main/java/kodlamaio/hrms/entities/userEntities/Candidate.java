@@ -38,6 +38,9 @@ class Candidate extends User {
     @Column(name = "github_address")
     private String githubAddress;
 
+    @Column(name ="linkedin_address")
+    private String linkedinAddress;
+
 //    @OneToOne()
 //    @JoinColumn(name="user_id")
 //    private User user;

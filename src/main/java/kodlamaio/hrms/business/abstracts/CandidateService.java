@@ -16,4 +16,5 @@ interface CandidateService {
     boolean verifyEmail(String token);
     Result addPhotoUrl(Long candidateId, String url);
     Result updateGithubAddress(Long candidateId, String githubAddress);
+    Result updateLinkedinAddress(Long candidateId, String linkedinAddress);
 }

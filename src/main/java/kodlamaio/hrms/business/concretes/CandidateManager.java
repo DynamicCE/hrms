@@ -91,6 +91,18 @@ class CandidateManager implements CandidateService{
         return new SuccessResult("GitHub adresi başarıyla güncellendi");
     }
 
+    @Override
+    public
+    Result updateLinkedinAddress ( Long candidateId, String linkedinAddress ) {
+        Candidate candidate = candidateDao.findById ( candidateId ).orElse ( null );
+        if(candidate==null){
+            return new ErrorResult("Aday bulunamadı");
+        }
+        candidate.setLinkedinAddress ( linkedinAddress );
+        candidateDao.save ( candidate );
+        return new SuccessResult("LinkedIn adresi başarıyla güncellendi");
+    }
+
 
     private boolean fakeMernisVerification(Candidate candidate){
         return true; //fake servis her zaman başarılı
