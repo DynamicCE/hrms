@@ -9,11 +9,11 @@ import kodlamaio.hrms.business.services.cv.abstracts.TalentInfoService;
 @Service
 public class TalentInfoInfoManager implements TalentInfoService {
     private
-    TalentInfoDao talentDao;
+    TalentInfoDao talentInfoDao;
     @Autowired
 
     public
-    TalentInfoInfoManager ( TalentInfoDao talentDao ) {
-        this.talentDao = talentDao;
+    TalentInfoInfoManager ( TalentInfoDao talentInfoDao ) {
+        this.talentInfoDao = talentInfoDao;
     }
 }

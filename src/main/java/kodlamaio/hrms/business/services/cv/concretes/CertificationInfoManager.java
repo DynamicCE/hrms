@@ -10,11 +10,11 @@ import kodlamaio.hrms.business.services.cv.abstracts.CertificationInfoService;
 public
 class CertificationInfoManager implements CertificationInfoService {
     private
-    CertificationInfoDao certificationDao;
+    CertificationInfoDao certificationInfoDao;
 
     @Autowired
     public
-    CertificationInfoManager ( CertificationInfoDao certificationDao ) {
-        this.certificationDao = certificationDao;
+    CertificationInfoManager ( CertificationInfoDao certificationInfoDao ) {
+        this.certificationInfoDao = certificationInfoDao;
     }
 }
