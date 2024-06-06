@@ -1,6 +1,6 @@
 package kodlamaio.hrms.business.services.common.abstracts;
 
-import kodlamaio.hrms.core.DataResult;
+import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.entities.commonEntities.City;
 
 

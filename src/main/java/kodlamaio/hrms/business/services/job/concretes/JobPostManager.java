@@ -1,13 +1,11 @@
 package kodlamaio.hrms.business.services.job.concretes;
 
-import kodlamaio.hrms.business.abstracts.EmployerService;
 import kodlamaio.hrms.business.converters.JobPostConverter;
 import kodlamaio.hrms.business.services.job.abstracts.JobPostService;
-import kodlamaio.hrms.core.*;
+import kodlamaio.hrms.core.result.*;
 import kodlamaio.hrms.dataAccess.job.abstracts.JobPostDao;
 import kodlamaio.hrms.entities.dtos.JobPostDto;
 import kodlamaio.hrms.entities.jobEntities.JobPost;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -27,9 +25,10 @@ public class JobPostManager implements JobPostService {
 
     }
     @Override
-    public DataResult<List<JobPost>> findByIsActive(Boolean isActive) {
+    public
+    DataResult<List<JobPost>> findByIsActive( Boolean isActive) {
         List<JobPost> activeJobPosts = jobPostDao.findByIsActive(isActive);
-        return new SuccessDataResult<>(activeJobPosts, "Aktif iş ilanları listelendi.");
+        return new SuccessDataResult<> (activeJobPosts, "Aktif iş ilanları listelendi.");
     }
 
     @Override
@@ -42,9 +41,10 @@ public class JobPostManager implements JobPostService {
     }
 
     @Override
-    public Result add(JobPost jobPost) {
+    public
+    Result add( JobPost jobPost) {
         jobPostDao.save(jobPost);
-        return new SuccessResult("JobPost eklendi");
+        return new SuccessResult ("JobPost eklendi");
     }
 
     @Override

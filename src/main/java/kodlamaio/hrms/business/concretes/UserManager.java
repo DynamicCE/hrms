@@ -1,10 +1,9 @@
 package kodlamaio.hrms.business.concretes;
 
 import java.util.List;
-import java.util.Optional;
 
-import kodlamaio.hrms.core.DataResult;
-import kodlamaio.hrms.core.SuccessDataResult;
+import kodlamaio.hrms.core.result.DataResult;
+import kodlamaio.hrms.core.result.SuccessDataResult;
 import kodlamaio.hrms.entities.userEntities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

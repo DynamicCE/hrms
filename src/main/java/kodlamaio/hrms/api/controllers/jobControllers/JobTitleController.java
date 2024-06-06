@@ -1,15 +1,14 @@
 package kodlamaio.hrms.api.controllers.jobControllers;
 
 import kodlamaio.hrms.business.services.job.abstracts.JobTitleService;
-import kodlamaio.hrms.core.DataResult;
-import kodlamaio.hrms.core.Result;
+import kodlamaio.hrms.core.result.DataResult;
+import kodlamaio.hrms.core.result.Result;
 import kodlamaio.hrms.entities.jobEntities.JobTitle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.crypto.Data;
 import java.util.List;
 
 @RestController

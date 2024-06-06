@@ -4,7 +4,7 @@ import java.util.List;
 
 import kodlamaio.hrms.business.services.email.abstracts.EmailVerificationService;
 import kodlamaio.hrms.business.services.token.abstracts.TokenService;
-import kodlamaio.hrms.core.*;
+import kodlamaio.hrms.core.result.*;
 import kodlamaio.hrms.dataAccess.user.abstracts.CandidateDao;
 import kodlamaio.hrms.entities.tokenEntities.VerificationToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +45,10 @@ class CandidateManager implements CandidateService{
     }
 
     @Override
-    public Result register(Candidate candidate) {
+    public
+    Result register( Candidate candidate) {
         if (candidateDao.existsByEmail(candidate.getEmail()) || candidateDao.existsByIdentityNo(candidate.getIdentityNo())) {
-            return new ErrorResult("zaten kayıtlısınız");
+            return new ErrorResult ("zaten kayıtlısınız");
         }
         boolean mernis = fakeMernisVerification(candidate);
         if (!mernis) {
@@ -55,7 +56,7 @@ class CandidateManager implements CandidateService{
         }
         candidateDao.save(candidate);
         tokenService.createToken(candidate.getEmail());
-        return new SuccessResult("başarıyla kaydoldunuz, e-postanızı kontrol ediniz");
+        return new SuccessResult ("başarıyla kaydoldunuz, e-postanızı kontrol ediniz");
     }
 
     @Override

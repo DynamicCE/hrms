@@ -1,4 +1,4 @@
-package kodlamaio.hrms.core;
+package kodlamaio.hrms.core.result;
 
 public
 class ErrorDataResult<T> extends DataResult<T> {

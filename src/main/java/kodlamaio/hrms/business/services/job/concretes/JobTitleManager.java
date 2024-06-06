@@ -1,7 +1,7 @@
 package kodlamaio.hrms.business.services.job.concretes;
 
 import kodlamaio.hrms.business.services.job.abstracts.JobTitleService;
-import kodlamaio.hrms.core.*;
+import kodlamaio.hrms.core.result.*;
 import kodlamaio.hrms.dataAccess.job.abstracts.JobTitleDao;
 import kodlamaio.hrms.entities.jobEntities.JobTitle;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
 package kodlamaio.hrms.business.services.cv.concretes;
 
-import kodlamaio.hrms.core.DataResult;
-import kodlamaio.hrms.core.Result;
-import kodlamaio.hrms.core.SuccessDataResult;
-import kodlamaio.hrms.core.SuccessResult;
+import kodlamaio.hrms.core.result.DataResult;
+import kodlamaio.hrms.core.result.Result;
+import kodlamaio.hrms.core.result.SuccessDataResult;
+import kodlamaio.hrms.core.result.SuccessResult;
 import kodlamaio.hrms.dataAccess.cvDao.EducationInfoDao;
 import kodlamaio.hrms.entities.cvEntities.EducationInfo;
 import org.springframework.beans.factory.annotation.Autowired;

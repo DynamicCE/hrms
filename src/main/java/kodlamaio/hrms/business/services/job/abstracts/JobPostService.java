@@ -1,7 +1,7 @@
 package kodlamaio.hrms.business.services.job.abstracts;
 
-import kodlamaio.hrms.core.DataResult;
-import kodlamaio.hrms.core.Result;
+import kodlamaio.hrms.core.result.DataResult;
+import kodlamaio.hrms.core.result.Result;
 import kodlamaio.hrms.entities.dtos.JobPostDto;
 import kodlamaio.hrms.entities.jobEntities.JobPost;
 

@@ -1,7 +1,7 @@
 package kodlamaio.hrms.api.controllers.commonControllers;
 
 import kodlamaio.hrms.business.services.common.abstracts.CityService;
-import kodlamaio.hrms.core.DataResult;
+import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.entities.commonEntities.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

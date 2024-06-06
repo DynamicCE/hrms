@@ -3,9 +3,8 @@ package kodlamaio.hrms.business.abstracts;
 import java.util.List;
 import java.util.Optional;
 
-import kodlamaio.hrms.core.DataResult;
-import kodlamaio.hrms.core.Result;
-import kodlamaio.hrms.entities.userEntities.Candidate;
+import kodlamaio.hrms.core.result.DataResult;
+import kodlamaio.hrms.core.result.Result;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.entities.userEntities.Employer;

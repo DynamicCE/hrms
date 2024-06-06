@@ -3,7 +3,7 @@ package kodlamaio.hrms.business.concretes;
 import java.util.List;
 import java.util.Optional;
 
-import kodlamaio.hrms.core.*;
+import kodlamaio.hrms.core.result.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +25,10 @@ class EmployerManager implements EmployerService {
 
 
     @Override
-    public DataResult<List<Employer>> getAll() {
+    public
+    DataResult<List<Employer>> getAll() {
         List<Employer> employers = employerDao.findAll();
-        return new SuccessDataResult<>(employers, "Employers listed successfully");
+        return new SuccessDataResult<> (employers, "Employers listed successfully");
     }
 
     @Override
@@ -36,7 +37,7 @@ class EmployerManager implements EmployerService {
         if (employer.isPresent()) {
             return new SuccessDataResult<>(employer, "Employer found successfully");
         } else {
-            return new ErrorDataResult<>(Optional.empty(), "Employer not found");
+            return new ErrorDataResult<> (Optional.empty(), "Employer not found");
         }
     }
 
@@ -61,12 +62,13 @@ class EmployerManager implements EmployerService {
     }
 
     @Override
-    public Result delete(Employer employer) {
+    public
+    Result delete( Employer employer) {
         try {
             employerDao.delete(employer);
             return new SuccessResult("Employer deleted successfully");
         } catch (Exception e) {
-            return new ErrorResult("Error deleting employer: " + e.getMessage());
+            return new ErrorResult ("Error deleting employer: " + e.getMessage());
         }
     }
 

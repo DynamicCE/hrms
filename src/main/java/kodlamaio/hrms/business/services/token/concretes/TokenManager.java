@@ -1,7 +1,7 @@
 package kodlamaio.hrms.business.services.token.concretes;
 
 import kodlamaio.hrms.business.services.token.abstracts.TokenService;
-import kodlamaio.hrms.core.*;
+import kodlamaio.hrms.core.result.*;
 import kodlamaio.hrms.dataAccess.token.TokenDao;
 import kodlamaio.hrms.entities.tokenEntities.VerificationToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +32,13 @@ class TokenManager implements TokenService {
     }
 
     @Override
-    public DataResult<VerificationToken> validateToken(String verificationToken) {
+    public
+    DataResult<VerificationToken> validateToken( String verificationToken) {
         Optional<VerificationToken> foundToken = tokenDao.findByToken(verificationToken);
         if (foundToken.isPresent()) {
-            return new SuccessDataResult<>(foundToken.get(), "Başarılı");
+            return new SuccessDataResult<> (foundToken.get(), "Başarılı");
         } else {
-            return new ErrorDataResult<>(null, "Token geçersiz");
+            return new ErrorDataResult<> (null, "Token geçersiz");
         }
     }
 

@@ -2,14 +2,11 @@ package kodlamaio.hrms.api.controllers.userControllers;
 
 
 import java.util.List;
-import java.util.Optional;
 
 import jakarta.validation.Valid;
 import kodlamaio.hrms.business.services.token.abstracts.TokenService;
-import kodlamaio.hrms.core.DataResult;
-import kodlamaio.hrms.core.Result;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import kodlamaio.hrms.core.result.DataResult;
+import kodlamaio.hrms.core.result.Result;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

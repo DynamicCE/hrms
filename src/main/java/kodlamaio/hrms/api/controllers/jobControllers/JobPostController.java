@@ -2,13 +2,10 @@ package kodlamaio.hrms.api.controllers.jobControllers;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
 import kodlamaio.hrms.business.services.job.abstracts.JobPostService;
-import kodlamaio.hrms.core.DataResult;
-import kodlamaio.hrms.core.Result;
-import kodlamaio.hrms.core.SuccessDataResult;
-import kodlamaio.hrms.dataAccess.job.abstracts.JobPostDao;
+import kodlamaio.hrms.core.result.DataResult;
+import kodlamaio.hrms.core.result.Result;
 import kodlamaio.hrms.entities.dtos.JobPostDto;
 import kodlamaio.hrms.entities.jobEntities.JobPost;
-import kodlamaio.hrms.entities.userEntities.Employer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

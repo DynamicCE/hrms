@@ -1,9 +1,8 @@
 package kodlamaio.hrms.api.controllers.cvControllers;
 
 import kodlamaio.hrms.business.services.cv.abstracts.ExperienceInfoService;
-import kodlamaio.hrms.core.DataResult;
-import kodlamaio.hrms.core.Result;
-import kodlamaio.hrms.entities.cvEntities.EducationInfo;
+import kodlamaio.hrms.core.result.DataResult;
+import kodlamaio.hrms.core.result.Result;
 import kodlamaio.hrms.entities.cvEntities.ExperienceInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

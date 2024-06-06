@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
-import kodlamaio.hrms.core.DataResult;
-import kodlamaio.hrms.core.Result;
+import kodlamaio.hrms.core.result.DataResult;
+import kodlamaio.hrms.core.result.Result;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
