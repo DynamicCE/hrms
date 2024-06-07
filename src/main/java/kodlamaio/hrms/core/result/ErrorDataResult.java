@@ -1,14 +1,31 @@
 package kodlamaio.hrms.core.result;
 
+import java.util.Optional;
+
 public
 class ErrorDataResult<T> extends DataResult<T> {
     public
-    ErrorDataResult (  T data ) {
-        super ( false, data );
+    ErrorDataResult ( T data, String message ) {
+        super ( data, false, message );
     }
 
     public
-    ErrorDataResult (  T data ,String message ) {
-        super ( false, message, data );
+    ErrorDataResult ( Optional<T> data, String message ) {
+        super ( data, false, message );
+    }
+
+    public
+    ErrorDataResult ( Optional<T> data ) {
+        super ( data, false );
+    }
+
+    public
+    ErrorDataResult ( String message ) {
+        super ( Optional.empty ( ), false, message );
+    }
+
+    public
+    ErrorDataResult () {
+        super ( Optional.empty ( ), false );
     }
 }

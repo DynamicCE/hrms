@@ -1,15 +1,11 @@
 package kodlamaio.hrms.core.result;
 
-public
-class ErrorResult extends Result{
-
-    public
-    ErrorResult ( boolean success ) {
-        super ( false );
+public class ErrorResult extends Result {
+    public ErrorResult(String message) {
+        super(false, message);
     }
 
-    public
-    ErrorResult (  String message ) {
-        super ( false, message );
+    public ErrorResult() {
+        super(false);
     }
 }
