@@ -1,6 +1,6 @@
 package kodlamaio.hrms.business.services.systemConfigurations.concretes;
 
-import kodlamaio.hrms.business.services.cv.abstracts.ProgrammingTechnologyService;
+import kodlamaio.hrms.business.services.systemConfigurations.abstracts.ProgrammingTechnologyService;
 import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.core.result.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.cvDao.ProgrammingTechnologyDao;
