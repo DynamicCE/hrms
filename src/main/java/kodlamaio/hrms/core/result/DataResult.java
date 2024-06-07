@@ -1,22 +1,37 @@
 package kodlamaio.hrms.core.result;
 
-public
-class DataResult<T> extends  Result{
+import java.util.Optional;
 
+public
+class DataResult<T> extends Result {
+    private Optional<T> optionalData;
     private T data;
+
     public
-    DataResult ( boolean success,T data ) {
-        super ( success );
-        this.data = data;
+    DataResult ( Optional<T> optionalData, boolean success, String message ) {
+        super ( success, message );
+        this.optionalData = optionalData;
     }
 
     public
-    DataResult ( boolean success, String message,T data ) {
+    DataResult ( T data, boolean success, String message ) {
         super ( success, message );
         this.data = data;
     }
 
-    public T getData() {
+    public
+    DataResult ( Optional<T> data, boolean success ) {
+        super ( success );
+        this.optionalData = optionalData;
+    }
+
+    public
+    T getData () {
         return data;
+    }
+
+    public
+    Optional<T> getOptionalData () {
+        return this.optionalData;
     }
 }
