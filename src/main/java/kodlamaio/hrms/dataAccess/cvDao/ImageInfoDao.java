@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import kodlamaio.hrms.entities.cvEntities.ImageInfo;
 
+import java.util.List;
+
 @Repository
 public interface ImageInfoDao extends JpaRepository<ImageInfo, Long> {
+    List<ImageInfo> findAllByCandidateId( Long candidateId);
 }

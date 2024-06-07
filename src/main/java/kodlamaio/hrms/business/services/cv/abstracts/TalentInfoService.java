@@ -1,8 +1,13 @@
 package kodlamaio.hrms.business.services.cv.abstracts;
 
-import org.springframework.stereotype.Service;
+import kodlamaio.hrms.core.result.DataResult;
+import kodlamaio.hrms.entities.cvEntities.TalentInfo;
 
-@Service
-public
-interface TalentInfoService {
+import java.util.List;
+
+public interface TalentInfoService {
+    DataResult<List<TalentInfo>> getAllByCandidateId(Long candidateId);
+    DataResult<TalentInfo> add(TalentInfo talentInfo);
+    DataResult<TalentInfo> update(TalentInfo talentInfo);
+    DataResult<Void> delete(Long id);
 }

@@ -21,7 +21,6 @@ class ProgrammingTechnology {
     @Column(name = "name", nullable = false)
     private String name;
 
-
     @ManyToOne
     @JoinColumn(name = "candidate_id", nullable = false)
     private Candidate candidate;
