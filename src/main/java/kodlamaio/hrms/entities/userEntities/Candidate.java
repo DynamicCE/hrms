@@ -2,6 +2,7 @@ package kodlamaio.hrms.entities.userEntities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import kodlamaio.hrms.entities.systemProfileEntities.ProgrammingTechnology;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,6 +41,10 @@ class Candidate extends User {
 
     @Column(name ="linkedin_address")
     private String linkedinAddress;
+
+    @OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ProgrammingTechnology> programmingTechnologies;
+
 
 //    @OneToOne()
 //    @JoinColumn(name="user_id")

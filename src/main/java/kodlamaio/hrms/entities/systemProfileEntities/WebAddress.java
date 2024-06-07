@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entities.cvEntities;
+package kodlamaio.hrms.entities.systemProfileEntities;
 import jakarta.persistence.*;
 import kodlamaio.hrms.entities.userEntities.Candidate;
 import lombok.AllArgsConstructor;
