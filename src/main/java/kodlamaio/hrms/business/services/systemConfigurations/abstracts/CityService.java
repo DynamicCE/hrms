@@ -1,7 +1,7 @@
-package kodlamaio.hrms.business.services.common.abstracts;
+package kodlamaio.hrms.business.services.systemConfigurations.abstracts;
 
 import kodlamaio.hrms.core.result.DataResult;
-import kodlamaio.hrms.entities.commonEntities.City;
+import kodlamaio.hrms.entities.systemConfigurationsEntities.City;
 
 
 import java.util.List;

@@ -2,7 +2,7 @@ package kodlamaio.hrms.business.services.cv.concretes;
 
 import kodlamaio.hrms.business.services.cv.abstracts.ProgrammingTechnologyService;
 import kodlamaio.hrms.dataAccess.cvDao.ProgrammingTechnologyDao;
-import kodlamaio.hrms.entities.systemProfileEntities.ProgrammingTechnology;
+import kodlamaio.hrms.entities.systemConfigurationsEntities.ProgrammingTechnology;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

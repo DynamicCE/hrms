@@ -1,6 +1,6 @@
 package kodlamaio.hrms.business.services.cv.abstracts;
 
-import kodlamaio.hrms.entities.systemProfileEntities.ProgrammingTechnology;
+import kodlamaio.hrms.entities.systemConfigurationsEntities.ProgrammingTechnology;
 
 import java.util.List;
 

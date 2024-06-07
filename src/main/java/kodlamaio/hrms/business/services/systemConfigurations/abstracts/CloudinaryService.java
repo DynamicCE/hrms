@@ -1,4 +1,4 @@
-package kodlamaio.hrms.business.services.common.abstracts;
+package kodlamaio.hrms.business.services.systemConfigurations.abstracts;
 
 import kodlamaio.hrms.core.result.DataResult;
 import org.springframework.web.multipart.MultipartFile;

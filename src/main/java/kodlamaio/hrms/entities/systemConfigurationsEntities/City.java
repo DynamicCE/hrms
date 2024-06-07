@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entities.commonEntities;
+package kodlamaio.hrms.entities.systemConfigurationsEntities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

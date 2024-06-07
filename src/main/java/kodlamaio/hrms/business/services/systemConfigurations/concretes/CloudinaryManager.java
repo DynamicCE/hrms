@@ -1,5 +1,5 @@
-package kodlamaio.hrms.business.services.common.concretes;
-import kodlamaio.hrms.business.services.common.abstracts.CloudinaryService;
+package kodlamaio.hrms.business.services.systemConfigurations.concretes;
+import kodlamaio.hrms.business.services.systemConfigurations.abstracts.CloudinaryService;
 import kodlamaio.hrms.core.adapter.CloudinaryAdapter;
 import kodlamaio.hrms.core.result.DataResult;
 import org.springframework.beans.factory.annotation.Autowired;

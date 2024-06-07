@@ -1,6 +1,6 @@
 package kodlamaio.hrms.dataAccess.cvDao;
 
-import kodlamaio.hrms.entities.systemProfileEntities.ProgrammingTechnology;
+import kodlamaio.hrms.entities.systemConfigurationsEntities.ProgrammingTechnology;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public

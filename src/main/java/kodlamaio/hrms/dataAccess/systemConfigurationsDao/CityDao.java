@@ -1,6 +1,6 @@
-package kodlamaio.hrms.dataAccess.common;
+package kodlamaio.hrms.dataAccess.systemConfigurationsDao;
 
-import kodlamaio.hrms.entities.commonEntities.City;
+import kodlamaio.hrms.entities.systemConfigurationsEntities.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public

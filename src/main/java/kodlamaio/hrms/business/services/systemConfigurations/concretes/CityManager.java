@@ -1,10 +1,10 @@
-package kodlamaio.hrms.business.services.common.concretes;
+package kodlamaio.hrms.business.services.systemConfigurations.concretes;
 
-import kodlamaio.hrms.business.services.common.abstracts.CityService;
+import kodlamaio.hrms.business.services.systemConfigurations.abstracts.CityService;
 import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.core.result.SuccessDataResult;
-import kodlamaio.hrms.dataAccess.common.CityDao;
-import kodlamaio.hrms.entities.commonEntities.City;
+import kodlamaio.hrms.dataAccess.systemConfigurationsDao.CityDao;
+import kodlamaio.hrms.entities.systemConfigurationsEntities.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

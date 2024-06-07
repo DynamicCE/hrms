@@ -1,7 +1,7 @@
 package kodlamaio.hrms.api.controllers.userControllers;
 
 import kodlamaio.hrms.business.abstracts.CandidateService;
-import kodlamaio.hrms.business.services.common.abstracts.CloudinaryService;
+import kodlamaio.hrms.business.services.systemConfigurations.abstracts.CloudinaryService;
 import kodlamaio.hrms.business.services.token.abstracts.TokenService;
 import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.core.result.ErrorResult;
