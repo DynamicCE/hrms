@@ -37,25 +37,29 @@ class ProfileCoverLetterManager implements ProfileCoverLetterService {
         }
         ProfileCoverLetter profileCoverLetter = profileCoverLetterOptional.get ();
         profileCoverLetterDao.save ( profileCoverLetter );
-        return new SuccessDataResult<> ( profileCoverLetter,"Profil yazınız başarıyla güncellendi" );
+        return new SuccessDataResult<> ( profileCoverLetter,"Profil yazınız güncellendi" );
     }
 
     @Override
     public
     DataResult<ProfileCoverLetter> getById ( Long profileCoverLetterId ) {
         Optional<ProfileCoverLetter> result = profileCoverLetterDao.findById ( profileCoverLetterId );
-        return new SuccessDataResult<> ( result,"işlem başarılı" );
+        return new SuccessDataResult<> ( result,"Profil yazısı getirildi" );
     }
 
     @Override
     public
     DataResult<List<ProfileCoverLetter>> getAllProfileCoverLetters () {
-        return null;
+        List<ProfileCoverLetter> result = profileCoverLetterDao.findAll ();
+        return new SuccessDataResult<>(result,"Profil yazıları getirildi");
     }
 
     @Override
     public
     Result deleteProfileCoverLetter ( Long coverLetterId ) {
-        return null;
+        if(profileCoverLetterDao.findById ( coverLetterId ).isPresent ()){
+            return new ErrorResult ( "işlem başarısız, böyle bir id yok" );
+        }
+        return new SuccessResult ( "başarıyla silindi" );
     }
 }
