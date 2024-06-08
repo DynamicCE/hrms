@@ -26,7 +26,7 @@ class Employee extends User {
 
     @Column(name = "identity_no",nullable = false,unique = true)
     @NotBlank(message = "tcNo alanı boş bırakılamaz!")
-    private int identityNo;
+    private String identityNo;
 
     @Column(name = "birth_year",nullable = false)
     private int birthYear;

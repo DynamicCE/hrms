@@ -7,6 +7,8 @@ import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.core.result.ErrorResult;
 import kodlamaio.hrms.core.result.Result;
 import kodlamaio.hrms.core.result.SuccessResult;
+
+import kodlamaio.hrms.entities.dtos.cvDtos.CandidateCvDto;
 import kodlamaio.hrms.entities.userEntities.Candidate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -61,5 +63,11 @@ class CandidateController {
     public ResponseEntity<Result> updateGithubAddress(@PathVariable Long id, @RequestParam String githubAddress) {
         Result result = candidateService.updateGithubAddress(id, githubAddress);
         return result.isSuccess() ? ResponseEntity.ok(result) : ResponseEntity.badRequest().body(result);
+    }
+
+    @GetMapping("/{candidateId}/cv")
+    public ResponseEntity<DataResult<CandidateCvDto>> getCandidateCv( @PathVariable Long candidateId) {
+        DataResult<CandidateCvDto> result = candidateService.getCandidateCv(candidateId);
+        return ResponseEntity.ok(result);
     }
 }

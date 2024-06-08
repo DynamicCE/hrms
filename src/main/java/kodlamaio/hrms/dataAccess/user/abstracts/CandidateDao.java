@@ -9,6 +9,6 @@ public
 interface CandidateDao extends JpaRepository<Candidate, Long> {
 
     boolean existsByEmail ( String email );
-    boolean existsByIdentityNo ( int identityNo );
+    boolean existsByIdentityNo ( String identityNo );
 
 }

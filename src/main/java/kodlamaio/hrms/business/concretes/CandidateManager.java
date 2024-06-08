@@ -2,10 +2,12 @@ package kodlamaio.hrms.business.concretes;
 
 import java.util.List;
 
+import kodlamaio.hrms.business.services.cv.abstracts.*;
 import kodlamaio.hrms.business.services.email.abstracts.EmailVerificationService;
 import kodlamaio.hrms.business.services.token.abstracts.TokenService;
 import kodlamaio.hrms.core.result.*;
 import kodlamaio.hrms.dataAccess.user.abstracts.CandidateDao;
+import kodlamaio.hrms.entities.dtos.cvDtos.CandidateCvDto;
 import kodlamaio.hrms.entities.tokenEntities.VerificationToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,24 +20,38 @@ import kodlamaio.hrms.entities.userEntities.Candidate;
 public
 class CandidateManager implements CandidateService{
 
-    private
-    CandidateDao candidateDao;
-    private EmailVerificationService emailVerificationService;
-    private TokenService tokenService;
+    private final CandidateDao candidateDao;
+    private final EmailVerificationService emailVerificationService;
+    private final TokenService tokenService;
+    private final EducationInfoService educationInfoService;
+    private final ExperienceInfoService experienceInfoService;
+    private final LanguageInfoService languageInfoService;
+    private final ProjectInfoService projectInfoService;
+    private final TalentInfoService talentInfoService;
+    private final CoverLetterInfoService coverLetterInfoService;
+    private final ImageInfoService imageInfoService;
 
-    public
-    CandidateManager ( CandidateDao candidateDao, EmailVerificationService emailVerificationService, TokenService tokenService ) {
+    @Autowired
+    public CandidateManager(CandidateDao candidateDao,
+                            EmailVerificationService emailVerificationService,
+                            TokenService tokenService,
+                            EducationInfoService educationInfoService,
+                            ExperienceInfoService experienceInfoService,
+                            LanguageInfoService languageInfoService,
+                            ProjectInfoService projectInfoService,
+                            TalentInfoService talentInfoService,
+                            CoverLetterInfoService coverLetterInfoService,
+                            ImageInfoService imageInfoService) {
         this.candidateDao = candidateDao;
         this.emailVerificationService = emailVerificationService;
         this.tokenService = tokenService;
-    }
-
-    @Autowired
-    public
-    CandidateManager ( CandidateDao candidateDao, EmailVerificationService emailVerificationService ) {
-        this.candidateDao = candidateDao;
-        this.emailVerificationService = emailVerificationService;
-
+        this.educationInfoService = educationInfoService;
+        this.experienceInfoService = experienceInfoService;
+        this.languageInfoService = languageInfoService;
+        this.projectInfoService = projectInfoService;
+        this.talentInfoService = talentInfoService;
+        this.coverLetterInfoService = coverLetterInfoService;
+        this.imageInfoService = imageInfoService;
     }
 
     @Override
@@ -101,6 +117,24 @@ class CandidateManager implements CandidateService{
         candidate.setLinkedinAddress ( linkedinAddress );
         candidateDao.save ( candidate );
         return new SuccessResult("LinkedIn adresi başarıyla güncellendi");
+    }
+
+    @Override
+    public DataResult<CandidateCvDto> getCandidateCv(Long candidateId) {
+        Candidate candidate = candidateDao.findById(candidateId)
+                .orElseThrow(() -> new ResourceNotFoundException("Candidate not found with id: " + candidateId));
+        CandidateCvDto candidateCvDto = new CandidateCvDto();
+        candidateCvDto.setFirstName(candidate.getFirstName());
+        candidateCvDto.setLastName(candidate.getLastName());
+        candidateCvDto.setEmail(candidate.getEmail());
+        candidateCvDto.setEducationInfos(educationInfoService.getAllDtosByCandidateId(candidateId).getData());
+        candidateCvDto.setExperienceInfos(experienceInfoService.getAllDtosByCandidateId(candidateId).getData());
+        candidateCvDto.setLanguageInfos(languageInfoService.getAllDtosByCandidateId(candidateId).getData());
+        candidateCvDto.setProjectInfos(projectInfoService.getAllDtosByCandidateId(candidateId).getData());
+        candidateCvDto.setTalentInfos(talentInfoService.getAllDtosByCandidateId(candidateId).getData());
+        candidateCvDto.setCoverLetterInfos(coverLetterInfoService.getAllDtosByCandidateId(candidateId).getData());
+        candidateCvDto.setImageInfo(imageInfoService.getDtoByCandidateId(candidateId).getData());
+        return new SuccessDataResult<>(candidateCvDto, "Candidate CV info retrieved successfully");
     }
 
 

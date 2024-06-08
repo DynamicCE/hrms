@@ -27,7 +27,7 @@ class Candidate extends User {
 
     @Column(name = "identity_no", nullable = false, unique = true)
     @NotBlank(message = "TC kimlik numarası alanı boş bırakılamaz!")
-    private int identityNo;
+    private String identityNo;
 
     @Column(name = "birth_year", nullable = false)
     @NotBlank(message = "Doğum yılı alanı boş bırakılamaz!")

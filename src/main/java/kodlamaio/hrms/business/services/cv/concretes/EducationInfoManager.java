@@ -55,4 +55,6 @@ public class EducationInfoManager implements EducationInfoService {
         }
         return new SuccessDataResult<>(educationInfos, "Eğitim bilgileri getirildi");
     }
+
+
 }
