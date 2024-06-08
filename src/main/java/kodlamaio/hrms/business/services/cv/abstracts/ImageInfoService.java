@@ -10,4 +10,5 @@ public interface ImageInfoService {
     DataResult<ImageInfo> add(ImageInfo imageInfo);
     DataResult<ImageInfo> update(ImageInfo imageInfo);
     DataResult<Void> delete(Long id);
+
 }

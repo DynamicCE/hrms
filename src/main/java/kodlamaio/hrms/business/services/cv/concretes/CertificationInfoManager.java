@@ -5,10 +5,12 @@ import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.core.result.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.cvDao.CertificationInfoDao;
 import kodlamaio.hrms.entities.cvEntities.CertificationInfo;
+import kodlamaio.hrms.entities.dtos.cvDtos.CertificationInfoDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CertificationInfoManager implements CertificationInfoService {
@@ -42,5 +44,14 @@ public class CertificationInfoManager implements CertificationInfoService {
     public DataResult<Void> delete(Long id) {
         certificationInfoDao.deleteById(id);
         return new SuccessDataResult<>(null, "Sertifika bilgisi başarıyla silindi.");
+    }
+
+    @Override
+    public DataResult<List<CertificationInfoDto>> getAllDtosByCandidateId(Long candidateId) {
+        List<CertificationInfo> certificationInfos = certificationInfoDao.findByCandidateId(candidateId);
+        List<CertificationInfoDto> certificationInfoDtos = certificationInfos.stream()
+                .map(certificationInfo -> modelMapper.map(certificationInfo, CertificationInfoDto.class))
+                .collect(Collectors.toList());
+        return new SuccessDataResult<>(certificationInfoDtos, "Ön yazı bilgisi başarıyla güncellendi.");
     }
 }

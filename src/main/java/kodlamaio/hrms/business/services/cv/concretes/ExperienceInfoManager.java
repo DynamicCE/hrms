@@ -5,6 +5,7 @@ import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.core.result.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.cvDao.ExperienceInfoDao;
 import kodlamaio.hrms.entities.cvEntities.ExperienceInfo;
+import kodlamaio.hrms.entities.dtos.cvDtos.ExperienceInfoDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,5 +54,11 @@ public class ExperienceInfoManager implements ExperienceInfoService {
             }
         }
         return new SuccessDataResult<>(experienceInfos, "Adayın deneyim bilgileri bitiş yılına göre listelendi");
+    }
+
+    @Override
+    public
+    DataResult<List<ExperienceInfoDto>> getAllDtosByCandidateId ( Long candidateId ) {
+        return null;
     }
 }

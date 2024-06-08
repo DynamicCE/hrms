@@ -1,7 +1,6 @@
 package kodlamaio.hrms.business.concretes;
 
 import java.util.List;
-
 import kodlamaio.hrms.business.services.cv.abstracts.*;
 import kodlamaio.hrms.business.services.email.abstracts.EmailVerificationService;
 import kodlamaio.hrms.business.services.token.abstracts.TokenService;
@@ -10,15 +9,13 @@ import kodlamaio.hrms.dataAccess.user.abstracts.CandidateDao;
 import kodlamaio.hrms.entities.dtos.cvDtos.CandidateCvDto;
 import kodlamaio.hrms.entities.tokenEntities.VerificationToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
-
 import kodlamaio.hrms.business.abstracts.CandidateService;
-
-
 import kodlamaio.hrms.entities.userEntities.Candidate;
+
 @Service
-public
-class CandidateManager implements CandidateService{
+public class CandidateManager implements CandidateService {
 
     private final CandidateDao candidateDao;
     private final EmailVerificationService emailVerificationService;
@@ -55,16 +52,14 @@ class CandidateManager implements CandidateService{
     }
 
     @Override
-    public
-    DataResult<List<Candidate>> getAll() {
-        return new SuccessDataResult<List<Candidate>> ( candidateDao.findAll (),"işlem başarılı" );
+    public DataResult<List<Candidate>> getAll() {
+        return new SuccessDataResult<List<Candidate>>(candidateDao.findAll(), "işlem başarılı");
     }
 
     @Override
-    public
-    Result register( Candidate candidate) {
+    public Result register(Candidate candidate) {
         if (candidateDao.existsByEmail(candidate.getEmail()) || candidateDao.existsByIdentityNo(candidate.getIdentityNo())) {
-            return new ErrorResult ("zaten kayıtlısınız");
+            return new ErrorResult("zaten kayıtlısınız");
         }
         boolean mernis = fakeMernisVerification(candidate);
         if (!mernis) {
@@ -72,7 +67,7 @@ class CandidateManager implements CandidateService{
         }
         candidateDao.save(candidate);
         tokenService.createToken(candidate.getEmail());
-        return new SuccessResult ("başarıyla kaydoldunuz, e-postanızı kontrol ediniz");
+        return new SuccessResult("başarıyla kaydoldunuz, e-postanızı kontrol ediniz");
     }
 
     @Override
@@ -108,21 +103,23 @@ class CandidateManager implements CandidateService{
     }
 
     @Override
-    public
-    Result updateLinkedinAddress ( Long candidateId, String linkedinAddress ) {
-        Candidate candidate = candidateDao.findById ( candidateId ).orElse ( null );
-        if(candidate==null){
+    public Result updateLinkedinAddress(Long candidateId, String linkedinAddress) {
+        Candidate candidate = candidateDao.findById(candidateId).orElse(null);
+        if (candidate == null) {
             return new ErrorResult("Aday bulunamadı");
         }
-        candidate.setLinkedinAddress ( linkedinAddress );
-        candidateDao.save ( candidate );
+        candidate.setLinkedinAddress(linkedinAddress);
+        candidateDao.save(candidate);
         return new SuccessResult("LinkedIn adresi başarıyla güncellendi");
     }
 
     @Override
     public DataResult<CandidateCvDto> getCandidateCv(Long candidateId) {
-        Candidate candidate = candidateDao.findById(candidateId)
-                .orElseThrow(() -> new ResourceNotFoundException("Candidate not found with id: " + candidateId));
+        Candidate candidate = candidateDao.findById(candidateId).orElse(null);
+        if (candidate == null) {
+            return new ErrorDataResult<>("Candidate not found with id: " + candidateId);
+        }
+
         CandidateCvDto candidateCvDto = new CandidateCvDto();
         candidateCvDto.setFirstName(candidate.getFirstName());
         candidateCvDto.setLastName(candidate.getLastName());
@@ -134,13 +131,11 @@ class CandidateManager implements CandidateService{
         candidateCvDto.setTalentInfos(talentInfoService.getAllDtosByCandidateId(candidateId).getData());
         candidateCvDto.setCoverLetterInfos(coverLetterInfoService.getAllDtosByCandidateId(candidateId).getData());
         candidateCvDto.setImageInfo(imageInfoService.getDtoByCandidateId(candidateId).getData());
+
         return new SuccessDataResult<>(candidateCvDto, "Candidate CV info retrieved successfully");
     }
 
-
-    private boolean fakeMernisVerification(Candidate candidate){
+    private boolean fakeMernisVerification(Candidate candidate) {
         return true; //fake servis her zaman başarılı
     }
-
-
 }

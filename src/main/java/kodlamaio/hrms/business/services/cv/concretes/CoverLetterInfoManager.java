@@ -5,6 +5,7 @@ import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.core.result.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.cvDao.CoverLetterInfoDao;
 import kodlamaio.hrms.entities.cvEntities.CoverLetterInfo;
+import kodlamaio.hrms.entities.dtos.cvDtos.CoverLetterInfoDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,5 +43,11 @@ public class CoverLetterInfoManager implements CoverLetterInfoService {
     public DataResult<Void> delete(Long id) {
         coverLetterInfoDao.deleteById(id);
         return new SuccessDataResult<>(null, "Ön yazı bilgisi başarıyla silindi.");
+    }
+
+    @Override
+    public
+    DataResult<List<CoverLetterInfoDto>> getAllDtosByCandidateId ( Long candidateId ) {
+        return null;
     }
 }
