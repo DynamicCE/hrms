@@ -6,19 +6,22 @@ import kodlamaio.hrms.core.result.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.cvDao.ImageInfoDao;
 import kodlamaio.hrms.entities.cvEntities.ImageInfo;
 import kodlamaio.hrms.entities.dtos.cvDtos.ImageInfoDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ImageInfoManager implements ImageInfoService {
 
     private final ImageInfoDao imageInfoDao;
-
+    private final ModelMapper modelMapper;
     @Autowired
-    public ImageInfoManager(ImageInfoDao imageInfoDao) {
+    public ImageInfoManager( ImageInfoDao imageInfoDao, ModelMapper modelMapper ) {
         this.imageInfoDao = imageInfoDao;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -50,4 +53,14 @@ public class ImageInfoManager implements ImageInfoService {
     DataResult<ImageInfoDto> getDtoByCandidateId ( Long candidateId ) {
         return null;
     }
+
+    @Override
+    public DataResult<List<ImageInfoDto>> getAllDtosByCandidateId(Long candidateId) {
+        List<ImageInfo> imageInfos = imageInfoDao.findAllByCandidateId(candidateId);
+        List<ImageInfoDto> imageInfoDtos = imageInfos.stream()
+                .map(imageInfo -> modelMapper.map(imageInfo, ImageInfoDto.class))
+                .collect( Collectors.toList());
+        return new SuccessDataResult<>(imageInfoDtos, "Image infos listed successfully");
+    }
+
 }

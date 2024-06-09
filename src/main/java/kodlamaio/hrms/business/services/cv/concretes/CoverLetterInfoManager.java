@@ -6,19 +6,22 @@ import kodlamaio.hrms.core.result.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.cvDao.CoverLetterInfoDao;
 import kodlamaio.hrms.entities.cvEntities.CoverLetterInfo;
 import kodlamaio.hrms.entities.dtos.cvDtos.CoverLetterInfoDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CoverLetterInfoManager implements CoverLetterInfoService {
 
     private final CoverLetterInfoDao coverLetterInfoDao;
-
+    private final ModelMapper modelMapper;
     @Autowired
-    public CoverLetterInfoManager(CoverLetterInfoDao coverLetterInfoDao) {
+    public CoverLetterInfoManager( CoverLetterInfoDao coverLetterInfoDao, ModelMapper modelMapper ) {
         this.coverLetterInfoDao = coverLetterInfoDao;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -46,8 +49,11 @@ public class CoverLetterInfoManager implements CoverLetterInfoService {
     }
 
     @Override
-    public
-    DataResult<List<CoverLetterInfoDto>> getAllDtosByCandidateId ( Long candidateId ) {
-        return null;
+    public DataResult<List<CoverLetterInfoDto>> getAllDtosByCandidateId(Long candidateId) {
+        List<CoverLetterInfo> coverLetterInfos = coverLetterInfoDao.findAllByCandidateId(candidateId);
+        List<CoverLetterInfoDto> coverLetterInfoDtos = coverLetterInfos.stream()
+                .map(coverLetterInfo -> modelMapper.map(coverLetterInfo, CoverLetterInfoDto.class))
+                .collect( Collectors.toList());
+        return new SuccessDataResult<>(coverLetterInfoDtos, "Cover letter infos listed successfully");
     }
 }

@@ -9,5 +9,6 @@ import java.util.List;
 
 @Repository
 public interface CertificationInfoDao extends JpaRepository<CertificationInfo, Long> {
+    List<CertificationInfo> findAllByCandidateId( Long candidateId);
     List<CertificationInfo> findByCandidateId( Long candidateId);
 }

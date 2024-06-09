@@ -6,19 +6,22 @@ import kodlamaio.hrms.core.result.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.cvDao.ExperienceInfoDao;
 import kodlamaio.hrms.entities.cvEntities.ExperienceInfo;
 import kodlamaio.hrms.entities.dtos.cvDtos.ExperienceInfoDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ExperienceInfoManager implements ExperienceInfoService {
 
     private final ExperienceInfoDao experienceInfoDao;
-
+    private final ModelMapper modelMapper;
     @Autowired
-    public ExperienceInfoManager(ExperienceInfoDao experienceInfoDao) {
+    public ExperienceInfoManager( ExperienceInfoDao experienceInfoDao, ModelMapper modelMapper ) {
         this.experienceInfoDao = experienceInfoDao;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -63,8 +66,12 @@ public class ExperienceInfoManager implements ExperienceInfoService {
     }
 
     @Override
-    public
-    DataResult<List<ExperienceInfoDto>> getAllDtosByCandidateId ( Long candidateId ) {
-        return null;
+    public DataResult<List<ExperienceInfoDto>> getAllDtosByCandidateId(Long candidateId) {
+        List<ExperienceInfo> experienceInfos = experienceInfoDao.findAllByCandidateId(candidateId);
+        List<ExperienceInfoDto> experienceInfoDtos = experienceInfos.stream()
+                .map(experienceInfo -> modelMapper.map(experienceInfo, ExperienceInfoDto.class))
+                .collect( Collectors.toList());
+        return new SuccessDataResult<>(experienceInfoDtos, "Experience infos listed successfully");
     }
+
 }

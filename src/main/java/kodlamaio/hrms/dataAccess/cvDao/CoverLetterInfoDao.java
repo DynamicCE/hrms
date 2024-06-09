@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import kodlamaio.hrms.entities.cvEntities.CoverLetterInfo;
 
+import java.util.List;
+
 @Repository
 public interface CoverLetterInfoDao extends JpaRepository<CoverLetterInfo, Long> {
+    List<CoverLetterInfo> findAllByCandidateId(Long candidateId);
 }

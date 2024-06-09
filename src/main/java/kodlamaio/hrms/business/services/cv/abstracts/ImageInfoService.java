@@ -12,5 +12,6 @@ public interface ImageInfoService {
     DataResult<ImageInfo> update(ImageInfo imageInfo);
     DataResult<Void> delete(Long id);
     DataResult<ImageInfoDto> getDtoByCandidateId( Long candidateId);
+    DataResult<List<ImageInfoDto>> getAllDtosByCandidateId(Long candidateId);
 
 }

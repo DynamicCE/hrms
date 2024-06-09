@@ -6,19 +6,22 @@ import kodlamaio.hrms.core.result.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.cvDao.ProjectInfoDao;
 import kodlamaio.hrms.entities.cvEntities.ProjectInfo;
 import kodlamaio.hrms.entities.dtos.cvDtos.ProjectInfoDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProjectInfoManager implements ProjectInfoService {
 
     private final ProjectInfoDao projectInfoDao;
-
+    private final ModelMapper modelMapper;
     @Autowired
-    public ProjectInfoManager(ProjectInfoDao projectInfoDao) {
+    public ProjectInfoManager( ProjectInfoDao projectInfoDao, ModelMapper modelMapper ) {
         this.projectInfoDao = projectInfoDao;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -46,8 +49,12 @@ public class ProjectInfoManager implements ProjectInfoService {
     }
 
     @Override
-    public
-    DataResult<List<ProjectInfoDto>> getAllDtosByCandidateId ( Long candidateId ) {
-        return null;
+    public DataResult<List<ProjectInfoDto>> getAllDtosByCandidateId(Long candidateId) {
+        List<ProjectInfo> projectInfos = projectInfoDao.findAllByCandidateId(candidateId);
+        List<ProjectInfoDto> projectInfoDtos = projectInfos.stream()
+                .map(projectInfo -> modelMapper.map(projectInfo, ProjectInfoDto.class))
+                .collect( Collectors.toList());
+        return new SuccessDataResult<>(projectInfoDtos, "Project infos listed successfully");
     }
+
 }

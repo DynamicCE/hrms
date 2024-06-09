@@ -11,4 +11,5 @@ import java.util.List;
 public interface EducationInfoDao extends JpaRepository<EducationInfo, Long> {
     List<EducationInfo> findAllByCandidateIdOrderByGraduationYearDesc( Long candidateId);
     EducationInfo findByCandidateId(Long candidateId);
+    List<EducationInfo>  findAllByCandidateId(Long candidateId);
 }

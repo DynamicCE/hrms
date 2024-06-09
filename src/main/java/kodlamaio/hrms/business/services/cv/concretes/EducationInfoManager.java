@@ -6,6 +6,7 @@ import kodlamaio.hrms.core.result.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.cvDao.EducationInfoDao;
 import kodlamaio.hrms.entities.cvEntities.EducationInfo;
 import kodlamaio.hrms.entities.dtos.cvDtos.EducationInfoDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +17,11 @@ import java.util.stream.Collectors;
 public class EducationInfoManager implements EducationInfoService {
 
     private final EducationInfoDao educationInfoDao;
-
+    private final ModelMapper modelMapper;
     @Autowired
-    public EducationInfoManager(EducationInfoDao educationInfoDao) {
+    public EducationInfoManager( EducationInfoDao educationInfoDao, ModelMapper modelMapper ) {
         this.educationInfoDao = educationInfoDao;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -60,7 +62,11 @@ public class EducationInfoManager implements EducationInfoService {
 
     @Override
     public DataResult<List<EducationInfoDto>> getAllDtosByCandidateId(Long candidateId) {
-       return  null;
+        List<EducationInfo> educationInfos = educationInfoDao.findAllByCandidateId(candidateId);
+        List<EducationInfoDto> educationInfoDtos = educationInfos.stream()
+                .map(educationInfo -> modelMapper.map(educationInfo, EducationInfoDto.class))
+                .collect(Collectors.toList());
+        return new SuccessDataResult<>(educationInfoDtos, "Education infos listed successfully");
     }
 
 

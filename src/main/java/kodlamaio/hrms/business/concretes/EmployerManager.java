@@ -35,7 +35,7 @@ class EmployerManager implements EmployerService {
     public DataResult<Optional<Employer>> findById(Long id) {
         Optional<Employer> employer = employerDao.findById(id);
         if (employer.isPresent()) {
-            return new SuccessDataResult<>(employer, "Employer found successfully");
+            return new SuccessDataResult(employer, "Employer found successfully");
         } else {
             return new ErrorDataResult<>(Optional.empty(), "Employer not found");
         }
