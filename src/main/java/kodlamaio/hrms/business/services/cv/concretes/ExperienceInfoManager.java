@@ -22,6 +22,12 @@ public class ExperienceInfoManager implements ExperienceInfoService {
     }
 
     @Override
+    public
+    DataResult<List<ExperienceInfo>> getAll () {
+        return new SuccessDataResult<> (experienceInfoDao.findAll (),"hepsi getirldi"  );
+    }
+
+    @Override
     public DataResult<List<ExperienceInfo>> getAllByCandidateId(Long candidateId) {
         List<ExperienceInfo> result = experienceInfoDao.findAllByCandidateId(candidateId);
         return new SuccessDataResult<>(result, "Adayın deneyim bilgileri başarıyla getirildi.");

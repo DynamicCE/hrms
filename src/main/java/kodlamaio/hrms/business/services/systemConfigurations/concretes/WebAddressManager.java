@@ -3,7 +3,7 @@ package kodlamaio.hrms.business.services.systemConfigurations.concretes;
 import kodlamaio.hrms.business.services.systemConfigurations.abstracts.WebAddressService;
 import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.core.result.SuccessDataResult;
-import kodlamaio.hrms.dataAccess.cvDao.WebAddressDao;
+import kodlamaio.hrms.dataAccess.systemConfigurationsDao.WebAddressDao;
 import kodlamaio.hrms.entities.systemConfigurationsEntities.WebAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

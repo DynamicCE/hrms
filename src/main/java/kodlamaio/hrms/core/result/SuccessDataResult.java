@@ -3,7 +3,7 @@ package kodlamaio.hrms.core.result;
 import java.util.Optional;
 
 public
-class SuccessDataResult<T> extends DataResult<T> {
+class SuccessDataResult<T> extends DataResult {
     public
     SuccessDataResult ( T data, String message ) {
         super ( data, true, message );
