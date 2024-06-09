@@ -4,5 +4,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface IdentityNoVerificationService {
-public boolean checkIdentityNo(int identityNo);
+public boolean checkIdentityNo(String identityNo);
 }

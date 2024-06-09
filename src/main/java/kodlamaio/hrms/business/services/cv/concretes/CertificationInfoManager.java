@@ -18,40 +18,42 @@ public class CertificationInfoManager implements CertificationInfoService {
     private final CertificationInfoDao certificationInfoDao;
 
     @Autowired
-    public CertificationInfoManager(CertificationInfoDao certificationInfoDao) {
+    public
+    CertificationInfoManager ( CertificationInfoDao certificationInfoDao ) {
         this.certificationInfoDao = certificationInfoDao;
     }
 
     @Override
-    public DataResult<List<CertificationInfo>> getAll() {
-        List<CertificationInfo> result = certificationInfoDao.findAll();
-        return new SuccessDataResult<>(result, "Tüm sertifika bilgileri başarıyla getirildi.");
+    public
+    DataResult<List<CertificationInfo>> getAll () {
+        List<CertificationInfo> result = certificationInfoDao.findAll ( );
+        return new SuccessDataResult<> ( result, "Tüm sertifika bilgileri başarıyla getirildi." );
     }
 
     @Override
-    public DataResult<CertificationInfo> add(CertificationInfo certificationInfo) {
-        CertificationInfo result = certificationInfoDao.save(certificationInfo);
-        return new SuccessDataResult<>(result, "Sertifika bilgisi başarıyla eklendi.");
+    public
+    DataResult<CertificationInfo> add ( CertificationInfo certificationInfo ) {
+        CertificationInfo result = certificationInfoDao.save ( certificationInfo );
+        return new SuccessDataResult<> ( result, "Sertifika bilgisi başarıyla eklendi." );
     }
 
     @Override
-    public DataResult<CertificationInfo> update(CertificationInfo certificationInfo) {
-        CertificationInfo result = certificationInfoDao.save(certificationInfo);
-        return new SuccessDataResult<>(result, "Sertifika bilgisi başarıyla güncellendi.");
+    public
+    DataResult<CertificationInfo> update ( CertificationInfo certificationInfo ) {
+        CertificationInfo result = certificationInfoDao.save ( certificationInfo );
+        return new SuccessDataResult<> ( result, "Sertifika bilgisi başarıyla güncellendi." );
     }
 
     @Override
-    public DataResult<Void> delete(Long id) {
-        certificationInfoDao.deleteById(id);
-        return new SuccessDataResult<>(null, "Sertifika bilgisi başarıyla silindi.");
+    public
+    DataResult<Void> delete ( Long id ) {
+        certificationInfoDao.deleteById ( id );
+        return new SuccessDataResult<> ( null, "Sertifika bilgisi başarıyla silindi." );
     }
 
     @Override
-    public DataResult<List<CertificationInfoDto>> getAllDtosByCandidateId(Long candidateId) {
-        List<CertificationInfo> certificationInfos = certificationInfoDao.findByCandidateId(candidateId);
-        List<CertificationInfoDto> certificationInfoDtos = certificationInfos.stream()
-                .map(certificationInfo -> modelMapper.map(certificationInfo, CertificationInfoDto.class))
-                .collect(Collectors.toList());
-        return new SuccessDataResult<>(certificationInfoDtos, "Ön yazı bilgisi başarıyla güncellendi.");
+    public
+    DataResult<List<CertificationInfoDto>> getAllDtosByCandidateId ( Long candidateId ) {
+        return null;
     }
 }

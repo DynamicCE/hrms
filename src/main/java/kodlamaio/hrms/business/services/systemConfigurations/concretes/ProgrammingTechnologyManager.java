@@ -3,7 +3,7 @@ package kodlamaio.hrms.business.services.systemConfigurations.concretes;
 import kodlamaio.hrms.business.services.systemConfigurations.abstracts.ProgrammingTechnologyService;
 import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.core.result.SuccessDataResult;
-import kodlamaio.hrms.dataAccess.cvDao.ProgrammingTechnologyDao;
+import kodlamaio.hrms.dataAccess.systemConfigurationsDao.ProgrammingTechnologyDao;
 import kodlamaio.hrms.entities.systemConfigurationsEntities.ProgrammingTechnology;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

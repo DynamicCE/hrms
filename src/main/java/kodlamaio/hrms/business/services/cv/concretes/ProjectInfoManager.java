@@ -5,6 +5,7 @@ import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.core.result.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.cvDao.ProjectInfoDao;
 import kodlamaio.hrms.entities.cvEntities.ProjectInfo;
+import kodlamaio.hrms.entities.dtos.cvDtos.ProjectInfoDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,5 +43,11 @@ public class ProjectInfoManager implements ProjectInfoService {
     public DataResult<Void> delete(Long id) {
         projectInfoDao.deleteById(id);
         return new SuccessDataResult<>(null, "Proje bilgisi başarıyla silindi.");
+    }
+
+    @Override
+    public
+    DataResult<List<ProjectInfoDto>> getAllDtosByCandidateId ( Long candidateId ) {
+        return null;
     }
 }

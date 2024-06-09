@@ -60,11 +60,7 @@ public class EducationInfoManager implements EducationInfoService {
 
     @Override
     public DataResult<List<EducationInfoDto>> getAllDtosByCandidateId(Long candidateId) {
-        List<EducationInfo> educationInfos = educationInfoDao.findByCandidateId(candidateId);
-        List<EducationInfoDto> educationInfoDtos = educationInfos.stream()
-                .map(educationInfo -> new EducationInfoDto(educationInfo.getId(), educationInfo.getSchoolName(), educationInfo.getDegree(), educationInfo.getFieldOfStudy(), educationInfo.getStartDate(), educationInfo.getEndDate()))
-                .collect( Collectors.toList());
-        return new SuccessDataResult<>(educationInfoDtos, "Eğitim bilgileri getirildi");
+       return  null;
     }
 
 

@@ -5,6 +5,7 @@ import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.core.result.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.cvDao.TalentInfoDao;
 import kodlamaio.hrms.entities.cvEntities.Talent;
+import kodlamaio.hrms.entities.dtos.cvDtos.TalentInfoDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,5 +43,11 @@ public class TalentInfoManager implements TalentInfoService {
     public DataResult<Void> delete(Long id) {
         talentInfoDao.deleteById(id);
         return new SuccessDataResult<>(null, "Yetenek bilgisi başarıyla silindi.");
+    }
+
+    @Override
+    public
+    DataResult<List<TalentInfoDto>> getAllDtosByCandidateId ( Long candidateId ) {
+        return null;
     }
 }

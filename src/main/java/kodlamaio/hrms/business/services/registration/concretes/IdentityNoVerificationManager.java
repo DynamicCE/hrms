@@ -15,7 +15,7 @@ public class IdentityNoVerificationManager implements IdentityNoVerificationServ
     }
 
     @Override
-    public boolean checkIdentityNo(int identityNo) {
+    public boolean checkIdentityNo(String identityNo) {
         return candidateDao.existsByIdentityNo ( identityNo);
     }
 

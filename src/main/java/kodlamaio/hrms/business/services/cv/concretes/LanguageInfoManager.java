@@ -5,6 +5,7 @@ import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.core.result.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.cvDao.LanguageInfoDao;
 import kodlamaio.hrms.entities.cvEntities.LanguageInfo;
+import kodlamaio.hrms.entities.dtos.cvDtos.LanguageInfoDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,5 +43,11 @@ public class LanguageInfoManager implements LanguageInfoService {
     public DataResult<Void> delete(Long id) {
         languageInfoDao.deleteById(id);
         return new SuccessDataResult<>(null, "Dil bilgisi başarıyla silindi.");
+    }
+
+    @Override
+    public
+    DataResult<List<LanguageInfoDto>> getAllDtosByCandidateId ( Long candidateId ) {
+        return null;
     }
 }
