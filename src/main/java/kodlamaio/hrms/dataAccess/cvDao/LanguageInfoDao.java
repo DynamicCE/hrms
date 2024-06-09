@@ -10,7 +10,5 @@ import java.util.List;
 
 @Repository
 public interface LanguageInfoDao extends JpaRepository<LanguageInfo, Long> {
-    List<LanguageInfo> findAllByCandidateId( Long candidateId);
-    DataResult<LanguageInfo> addLanguageInfo( LanguageInfo languageInfo);
-    DataResult<List<LanguageInfo>> getAllDtosByCandidateId(Long candidateId);
+    List<LanguageInfo> findAllByCandidateId(Long candidateId);
 }

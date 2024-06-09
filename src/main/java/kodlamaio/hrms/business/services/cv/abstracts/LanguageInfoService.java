@@ -12,6 +12,6 @@ public interface LanguageInfoService {
     DataResult<LanguageInfo> add(LanguageInfo languageInfo);
     DataResult<LanguageInfo> update(LanguageInfo languageInfo);
     DataResult<Void> delete(Long id);
-    DataResult<List<LanguageInfoDto>> getAllDtosByCandidateId( Long candidateId);
+    DataResult<List<LanguageInfoDto>> getAllDtosByCandidateId(Long candidateId);
 
 }

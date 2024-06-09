@@ -37,7 +37,7 @@ class EmployerManager implements EmployerService {
         if (employer.isPresent()) {
             return new SuccessDataResult<>(employer, "Employer found successfully");
         } else {
-            return new ErrorDataResult<> (Optional.empty(), "Employer not found");
+            return new ErrorDataResult<>(Optional.empty(), "Employer not found");
         }
     }
 

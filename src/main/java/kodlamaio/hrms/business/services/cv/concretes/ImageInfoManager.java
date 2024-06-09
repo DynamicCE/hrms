@@ -5,6 +5,7 @@ import kodlamaio.hrms.core.result.DataResult;
 import kodlamaio.hrms.core.result.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.cvDao.ImageInfoDao;
 import kodlamaio.hrms.entities.cvEntities.ImageInfo;
+import kodlamaio.hrms.entities.dtos.cvDtos.ImageInfoDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,5 +43,11 @@ public class ImageInfoManager implements ImageInfoService {
     public DataResult<Void> delete(Long id) {
         imageInfoDao.deleteById(id);
         return new SuccessDataResult<>(null, "Resim bilgisi başarıyla silindi.");
+    }
+
+    @Override
+    public
+    DataResult<ImageInfoDto> getDtoByCandidateId ( Long candidateId ) {
+        return null;
     }
 }

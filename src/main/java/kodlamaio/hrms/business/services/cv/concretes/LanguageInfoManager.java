@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class LanguageInfoManager implements LanguageInfoService {
@@ -46,8 +47,7 @@ public class LanguageInfoManager implements LanguageInfoService {
     }
 
     @Override
-    public
-    DataResult<List<LanguageInfoDto>> getAllDtosByCandidateId ( Long candidateId ) {
-        return null;
+    public DataResult<List<LanguageInfoDto>> getAllDtosByCandidateId(Long candidateId) {
+     return null;
     }
 }
