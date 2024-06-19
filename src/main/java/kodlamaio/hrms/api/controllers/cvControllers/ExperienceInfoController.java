@@ -2,41 +2,83 @@ package kodlamaio.hrms.api.controllers.cvControllers;
 
 import kodlamaio.hrms.business.services.cv.abstracts.ExperienceInfoService;
 import kodlamaio.hrms.core.result.DataResult;
-import kodlamaio.hrms.core.result.Result;
 import kodlamaio.hrms.entities.cvEntities.ExperienceInfo;
-import org.springframework.beans.factory.annotation.Autowired;
+import kodlamaio.hrms.entities.dtos.cvDtos.ExperienceInfoDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("api/experienceInfo/")
-public
-class ExperienceInfoController {
-    private
-    ExperienceInfoService experienceInfoService;
+@RequestMapping("/api/experiences")
+public class ExperienceInfoController {
 
-    @Autowired
-    public
-    ExperienceInfoController ( ExperienceInfoService experienceInfoService ) {
+    private final ExperienceInfoService experienceInfoService;
+
+    public ExperienceInfoController(ExperienceInfoService experienceInfoService) {
         this.experienceInfoService = experienceInfoService;
     }
 
-    @PostMapping("getAll")
-    ResponseEntity<DataResult<List<ExperienceInfo>>> getAll ( ) {
-        DataResult<List<ExperienceInfo>>  result = experienceInfoService.getAll (  );
-        return ResponseEntity.ok ( result );
+    @GetMapping("/getall")
+    public ResponseEntity<DataResult<List<ExperienceInfo>>> getAll() {
+        DataResult<List<ExperienceInfo>> result = experienceInfoService.getAll();
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
-    @PostMapping("add")
-    ResponseEntity<Result> add ( @RequestBody ExperienceInfo experienceInfo ) {
-        Result result = experienceInfoService.add ( experienceInfo );
-        return ResponseEntity.ok ( result );
+    @GetMapping("/getallbycandidateid")
+    public ResponseEntity<DataResult<List<ExperienceInfo>>> getAllByCandidateId(@RequestParam Long candidateId) {
+        DataResult<List<ExperienceInfo>> result = experienceInfoService.getAllByCandidateId(candidateId);
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 
+    @PostMapping("/add")
+    public ResponseEntity<DataResult<ExperienceInfo>> add(@RequestBody ExperienceInfo experienceInfo) {
+        DataResult<ExperienceInfo> result = experienceInfoService.add(experienceInfo);
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
 
+    @PutMapping("/update")
+    public ResponseEntity<DataResult<ExperienceInfo>> update(@RequestBody ExperienceInfo experienceInfo) {
+        DataResult<ExperienceInfo> result = experienceInfoService.update(experienceInfo);
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<DataResult<Void>> delete(@RequestParam Long id) {
+        DataResult<Void> result = experienceInfoService.delete(id);
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+
+    @GetMapping("/getallbycandidateidorderbyendyeardesc")
+    public ResponseEntity<DataResult<List<ExperienceInfo>>> getAllByCandidateIdOrderByEndYearDesc(@RequestParam Long candidateId) {
+        DataResult<List<ExperienceInfo>> result = experienceInfoService.getAllByCandidateIdOrderByEndYearDesc(candidateId);
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+
+    @GetMapping("/getalldtosbycandidateid")
+    public ResponseEntity<DataResult<List<ExperienceInfoDto>>> getAllDtosByCandidateId(@RequestParam Long candidateId) {
+        DataResult<List<ExperienceInfoDto>> result = experienceInfoService.getAllDtosByCandidateId(candidateId);
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
 }

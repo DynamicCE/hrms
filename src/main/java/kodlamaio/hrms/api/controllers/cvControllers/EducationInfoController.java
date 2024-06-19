@@ -2,37 +2,74 @@ package kodlamaio.hrms.api.controllers.cvControllers;
 
 import kodlamaio.hrms.business.services.cv.abstracts.EducationInfoService;
 import kodlamaio.hrms.core.result.DataResult;
-import kodlamaio.hrms.core.result.Result;
 import kodlamaio.hrms.entities.cvEntities.EducationInfo;
-import org.springframework.beans.factory.annotation.Autowired;
+import kodlamaio.hrms.entities.dtos.cvDtos.EducationInfoDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("api/educationInfo/")
-public
-class EducationInfoController {
-    private
-    EducationInfoService educationInfoService;
-    @Autowired
+@RequestMapping("/api/educations")
+public class EducationInfoController {
 
-    public
-    EducationInfoController ( EducationInfoService educationInfoService ) {
+    private final EducationInfoService educationInfoService;
+
+    public EducationInfoController(EducationInfoService educationInfoService) {
         this.educationInfoService = educationInfoService;
     }
-    @PostMapping("add")
-    ResponseEntity<Result> add( @RequestBody  EducationInfo educationInfo){
-        Result result = educationInfoService.add(educationInfo);
-        return ResponseEntity.ok ( result );
+
+    @GetMapping("/getall")
+    public ResponseEntity<DataResult<List<EducationInfo>>> getAll() {
+        DataResult<List<EducationInfo>> result = educationInfoService.getAll();
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
-    @PostMapping("getAllByCandidateId")
-    ResponseEntity<DataResult<List<EducationInfo>>> getAllByCandidateId( Long candidateId){
-        DataResult result = educationInfoService.getAllByCandidateId ( candidateId );
-        return ResponseEntity.ok ( result );
+
+    @PostMapping("/add")
+    public ResponseEntity<DataResult<EducationInfo>> add(@RequestBody EducationInfo educationInfo) {
+        DataResult<EducationInfo> result = educationInfoService.add(educationInfo);
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<DataResult<EducationInfo>> update(@RequestBody EducationInfo educationInfo) {
+        DataResult<EducationInfo> result = educationInfoService.update(educationInfo);
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<DataResult<Void>> delete(@RequestParam Long id) {
+        DataResult<Void> result = educationInfoService.delete(id);
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+
+    @GetMapping("/getallbycandidateid")
+    public ResponseEntity<DataResult<List<EducationInfo>>> getAllByCandidateId(@RequestParam Long candidateId) {
+        DataResult<List<EducationInfo>> result = educationInfoService.getAllByCandidateId(candidateId);
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
+    }
+
+    @GetMapping("/getalldtosbycandidateid")
+    public ResponseEntity<DataResult<List<EducationInfoDto>>> getAllDtosByCandidateId(@RequestParam Long candidateId) {
+        DataResult<List<EducationInfoDto>> result = educationInfoService.getAllDtosByCandidateId(candidateId);
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 }

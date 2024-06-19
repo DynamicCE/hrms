@@ -86,7 +86,7 @@ class JobPostController {
         return ResponseEntity.ok ( result );
     }
 
-    @PostMapping("deactivateJobPost")
+        @PostMapping("deactivateJobPost")
     ResponseEntity<Result> deactivateJobPost ( Long jobId ) {
         Result result = jobPostService.deactivateJobPost ( jobId );
         return ResponseEntity.ok ( result );

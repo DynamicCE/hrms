@@ -27,7 +27,7 @@ class TokenController {
         return ResponseEntity.ok ( result );
     }
 
-    @GetMapping("validate")
+    @PostMapping("validate")
     public
     ResponseEntity<DataResult> validateToken ( @RequestBody String token ) {
         DataResult result = tokenService.validateToken ( token );
